@@ -14,6 +14,8 @@ import StudentIndex from "../views/StudentIndex"
 
 import Menus from "../views/Menus"
 
+import UserManage from "../views/UserManage"
+
 import StuManage from "../views/StuManage"
 
 export default new VueRouter({
@@ -43,6 +45,11 @@ export default new VueRouter({
         name: "Menus",
         component: Menus,
         children:[
+            {
+                path:"usermanage",
+                name: "UserManage",
+                component: UserManage
+            },
             {
                 path:"stumanage",
                 name: "StuManage",
