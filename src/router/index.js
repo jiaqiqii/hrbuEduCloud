@@ -18,6 +18,7 @@ import UserManage from "../views/UserManage"
 
 import StuManage from "../views/StuManage"
 
+import CourseWare from "../views/CourseWare"
 export default new VueRouter({
     routes:[
     {
@@ -57,5 +58,18 @@ export default new VueRouter({
             }
         ]
     },
+    {
+        path:"/menus",
+        name: "Menus",
+        component:Menus,
+        children:[
+            {
+                path:"courseware", 
+                name: "CourseWare",
+                component:CourseWare
+            }
+        ]
+
+    }
 ]
 })
