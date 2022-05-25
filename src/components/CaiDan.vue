@@ -3,7 +3,7 @@
       <h2>·教学管理</h2>
       <ul>
           <li>实验报告</li>
-          <li>课程发布</li>
+          <router-link to="/caidan1/courserelease" tag="li">课程发布</router-link>
           <li>学习记录</li>
       </ul>
   </div>
@@ -22,6 +22,7 @@ export default {
     // height: calc(100vh-60px);
     // less写法
     height: (100vh-60px);
+    background-color: #f3f5f7;
     h2{
         width: 190px;
         line-height: 50px;

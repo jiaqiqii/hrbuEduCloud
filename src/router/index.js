@@ -23,6 +23,8 @@ import KnowledgeMenus from "../views/KnowledgeMenus"
 
 
 import CourseWare from "../views/CourseWare"
+import caidan1 from "../views/caidan1"
+import CourseRelease from "../views/CourseRelease"
 export default new VueRouter({
     routes:[
     {
@@ -72,6 +74,18 @@ export default new VueRouter({
                 name: "KnowledgeMenus",
                 component: KnowledgeMenus
             },
+        ]
+    },
+    {
+        path:"/caidan1",
+        name: "caidan1",
+        component: caidan1,
+        children:[
+            {
+                path:"courserelease",
+                name: "CourseRelease",
+                component: CourseRelease
+            }
         ]
     },
     {
