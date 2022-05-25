@@ -67,12 +67,12 @@ export default new VueRouter({
         ]
     },
     {
-        path:"/menus",
-        name: "Menus",
-        component:Menus,
+        path:"/resourcesmenus",
+        name: "ResourcesMenus",
+        component:ResourcesMenus,
         children:[
             {
-                path:"courseware", 
+                path:"courseware",  
                 name: "CourseWare",
                 component:CourseWare
             }
