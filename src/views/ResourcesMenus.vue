@@ -1,14 +1,10 @@
 <template>
   <div class="adminindex">
       <Header />
-      <!-- <div class="main">
-      <SideMenus />
       
-      <router-view></router-view>
-
-      </div> -->
       <div class="main">
           <SideMenus1 />
+          <router-view></router-view>
       </div>
       
   </div>
