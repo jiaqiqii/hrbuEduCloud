@@ -14,9 +14,10 @@ import StudentIndex from "../views/StudentIndex"
 
 import Menus from "../views/Menus"
 
-import UserManage from "../views/UserManage"
-
 import StuManage from "../views/StuManage"
+
+import XitongMenus from "../views/XitongMenus"
+import UserManage from "../views/UserManage"
 
 import CourseWare from "../views/CourseWare"
 export default new VueRouter({
@@ -47,15 +48,22 @@ export default new VueRouter({
         component: Menus,
         children:[
             {
-                path:"usermanage",
-                name: "UserManage",
-                component: UserManage
-            },
-            {
                 path:"stumanage",
                 name: "StuManage",
                 component: StuManage,
             }
+        ]
+    },
+    {
+        path:"/xitongmenus",
+        name: "XitongMenus",
+        component: XitongMenus,
+        children:[
+            {
+                path:"usermanage",
+                name: "UserManage",
+                component: UserManage
+            },
         ]
     },
     {
