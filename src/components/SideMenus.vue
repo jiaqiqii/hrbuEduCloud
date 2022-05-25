@@ -6,7 +6,7 @@
           <li>职位管理</li>
           <li>角色管理</li>
           <li>菜单管理</li>
-          <li>数据字典</li>
+          <router-link to="/xitongmenus/knowledgemenus" tag="li">数据字典</router-link>
           <li>学校管理</li>
           <li>专业管理</li>
           <li>在线用户管理</li>

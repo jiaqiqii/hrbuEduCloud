@@ -19,6 +19,8 @@ import StuManage from "../views/StuManage"
 
 import XitongMenus from "../views/XitongMenus"
 import UserManage from "../views/UserManage"
+import KnowledgeMenus from "../views/KnowledgeMenus"
+
 
 import CourseWare from "../views/CourseWare"
 export default new VueRouter({
@@ -64,6 +66,11 @@ export default new VueRouter({
                 path:"usermanage",
                 name: "UserManage",
                 component: UserManage
+            },
+            {
+                path:"knowledgemenus",
+                name: "KnowledgeMenus",
+                component: KnowledgeMenus
             },
         ]
     },
