@@ -1,10 +1,12 @@
 <template>
-  <div class="caisidemenus">
-      <h2>·教学管理</h2>
+  <div class="ceping">
+      <h2>·考试测评</h2>
       <ul>
-          <li>实验报告</li>
-          <router-link to="/caidan1/courserelease" tag="li">课程发布</router-link>
-          <li>学习记录</li>
+          
+          <!-- <li>试卷管理</li> -->
+          <router-link to="/cepingguanli/TextManagement" tag="li">测评管理</router-link>
+          <li>试卷管理</li>
+          <li>成绩与批改</li>
       </ul>
   </div>
 </template>
@@ -16,7 +18,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.caisidemenus{
+.ceping{
     height: (100vh-60px);
     background-color: #f3f5f7;
     h2{

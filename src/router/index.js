@@ -25,6 +25,8 @@ import KnowledgeMenus from "../views/KnowledgeMenus"
 
 import CourseWare from "../views/CourseWare"
 import caidan1 from "../views/caidan1"
+import cepingguanli from "../views/cepingguanli"
+import TextManagement from "../views/TextManagement"
 import CourseRelease from "../views/CourseRelease"
 export default new VueRouter({
     routes:[
@@ -86,6 +88,18 @@ export default new VueRouter({
                 path:"courserelease",
                 name: "CourseRelease",
                 component: CourseRelease
+            }
+        ]
+    },
+    {
+        path:"/cepingguanli",
+        name: "cepingguanli",
+        component: cepingguanli,
+        children:[
+            {
+                path:"textmanagement",
+                name: "TextManagement",
+                component: TextManagement,
             }
         ]
     },

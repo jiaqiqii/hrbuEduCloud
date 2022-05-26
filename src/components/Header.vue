@@ -10,8 +10,8 @@
           <router-link to="/menus/stumanage" tag="li">教务管理</router-link> 
           <router-link to="/resourcesmenus/courseware" tag="li">资源库</router-link>
           <li>教研管理</li>
-          <li>教学管理</li>
-          <li>考试测评</li>
+          <router-link to="/caidan1/CourseRelease" tag="li">教学管理</router-link> 
+          <router-link to="/cepingguanli/TextManagement" tag="li">考试测评</router-link> 
       </ul>
       <ul class="unlogin">
           <li>管理员</li>
