@@ -100,11 +100,11 @@
       <el-pagination
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
-        :current-page="currentPage4"
-        :page-sizes="[100, 200, 300, 400]"
-        :page-size="100"
+        :current-page="pageNum"
+        :page-sizes="[3, 20, 50]"
+        :page-size="pageSize"
         layout="total, sizes, prev, pager, next, jumper"
-        :total="400"
+        :total="total"
       >
       </el-pagination>
     </div>
@@ -147,6 +147,9 @@ export default {
       tableData: [],
       multipleSelection: [],
       currentPage4: 4,
+      total:0,
+      pageSize:3,
+      pageNum : 1,
     };
   },
   mounted() {
@@ -155,15 +158,21 @@ export default {
   },
   methods: {
     getStuInfo(data) {
-      const obj = {};
+      const obj = {
+        params:{
+          pageNum: this.pageNum,
+          pageSize: this.pageSize
+        }
+      }
       if (data) {
-        obj.params = data;
+        obj.params = {...obj.params,...data};
       }
       axios
         .get("/api/stu/stuinfo", obj)
         .then((response) => {
           // console.log(response);
-          this.tableData = response.data.data;
+          this.tableData = response.data.data.results;
+          this.total = response.data.data.total;
           // console.log(this.tableData);
           // this.tableData.map((item) => {
           //   item.gender = item.gender === 1 ? "男" : "女"
@@ -178,10 +187,12 @@ export default {
       this.multipleSelection = val;
     },
     handleSizeChange(val) {
-      console.log(`每页 ${val} 条`);
+      this.pageSize = val
+      this.search();
     },
     handleCurrentChange(val) {
-      console.log(`当前页: ${val}`);
+      this.pageNum = val
+      this.search();
     },
 
     // 重置密码
