@@ -66,7 +66,7 @@
           clearable
         >
         </el-input>
-        <el-button type="primary" size="medium">搜索</el-button>
+        <el-button @click="search" type="primary" size="medium">搜索</el-button>
       </el-row>
       <el-table
         ref="multipleTable"
@@ -151,22 +151,29 @@ export default {
   },
   mounted() {
     // 默认调用获取学生信息接口
-    axios
-      .get("api/stu/stuinfo")
-      .then((response) => {
-        // console.log(response);
-        this.tableData = response.data.data;
-        // console.log(this.tableData);
-        // this.tableData.map((item) => {
-        //   item.gender = item.gender === 1 ? "男" : "女"
-        //   item.state = item.state === 1 ? "有效" : "无效"
-        // })
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    this.getStuInfo();
   },
   methods: {
+    getStuInfo(data) {
+      const obj = {};
+      if (data) {
+        obj.params = data;
+      }
+      axios
+        .get("/api/stu/stuinfo", obj)
+        .then((response) => {
+          // console.log(response);
+          this.tableData = response.data.data;
+          // console.log(this.tableData);
+          // this.tableData.map((item) => {
+          //   item.gender = item.gender === 1 ? "男" : "女"
+          //   item.state = item.state === 1 ? "有效" : "无效"
+          // })
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
     handleSelectionChange(val) {
       this.multipleSelection = val;
     },
@@ -220,6 +227,21 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+    },
+
+    // 学生信息模糊搜索
+    search() {
+      const data = {};
+      if (this.stuState == 1 || this.stuState == 0) {
+        data.stuState = this.stuState;
+      }
+      if (this.major) {
+        data.major = this.major;
+      }
+      if (this.input) {
+        data.input = this.input;
+      }
+      this.getStuInfo(data);
     },
   },
 };

@@ -15,6 +15,7 @@ import StudentIndex from "../views/StudentIndex"
 import Menus from "../views/Menus"
 
 import ResourcesMenus from "../views/ResourcesMenus"
+// 引入学生管理页面
 import StuManage from "../views/StuManage"
 
 import XitongMenus from "../views/XitongMenus"
