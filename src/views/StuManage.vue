@@ -28,7 +28,7 @@
         <span>所属专业</span>
         <el-select
           class="major"
-          v-model="value1"
+          v-model="major"
           clearable
           size="medium"
           placeholder="请选择"
@@ -45,7 +45,7 @@
         <span>状态</span>
         <el-select
           class="state"
-          v-model="value"
+          v-model="stuState"
           clearable
           size="medium"
           placeholder="请选择"
@@ -119,19 +119,19 @@ export default {
     return {
       options: [
         {
-          value: "2",
+          value: 2,
           label: "全部",
         },
         {
-          value: "1",
+          value: 1,
           label: "有效",
         },
         {
-          value: "0",
+          value: 0,
           label: "禁用",
         },
       ],
-      value: "",
+      stuState: 2,
       options1: [
         {
           value: "软件工程",
@@ -142,7 +142,7 @@ export default {
           label: "计算机",
         },
       ],
-      value1: "",
+      major: "",
       input: "",
       tableData: [],
       multipleSelection: [],
