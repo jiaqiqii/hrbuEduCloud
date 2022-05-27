@@ -4,12 +4,12 @@
         <div class="content1">
             <el-row>
                 <span>测评形式</span>
-                <el-select v-model="value" size="medium" placeholder="全部">
+                <el-select v-model="value1" size="medium" placeholder="全部">
                     <el-option v-for="item in options1" :key="item.value" :label="item.label" :value="item.value">
                     </el-option>
                 </el-select>
                 <span>状态</span>
-                <el-select v-model="value" size="medium" placeholder="全部">
+                <el-select v-model="value1" size="medium" placeholder="全部">
                     <el-option v-for="item in options2" :key="item.value" :label="item.label" :value="item.value">
                     </el-option>
                 </el-select>
@@ -22,6 +22,12 @@
         </div>
         <div class="content2">
 
+        </div>
+        <div class="content3">
+            <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
+                :current-page="currentPage4" :page-sizes="[100, 200, 300, 400]" :page-size="100"
+                layout="total, sizes, prev, pager, next, jumper" :total="400">
+            </el-pagination>
         </div>
     </div>
 </template>
@@ -64,6 +70,8 @@ export default {
                 label: '已结束'
             },],
             value2: '',
+            input: '',
+            currentPage4: 4
         }
     }
 }
@@ -83,6 +91,7 @@ export default {
         height: 35px;
         background-color: #fff;
         padding: 20px;
+        border-radius: 4px;
     }
     .el-select{
         width: 120px;
@@ -91,6 +100,17 @@ export default {
     .el-input{
         width: 280px;
         margin-right: 80px;
+    }
+    .content3 {
+        margin-top: 20px;
+        width: 570px;
+        height: 50px;
+        margin-bottom: 300px;
+        background-color: #fff;
+        float: right;
+        .el-pagination{
+            margin: 10px 0 0 20px;
+        }
     }
     span {
             font-size: 14px;

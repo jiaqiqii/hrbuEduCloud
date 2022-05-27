@@ -27,6 +27,7 @@ import CourseWare from "../views/CourseWare"
 import caidan1 from "../views/caidan1"
 import cepingguanli from "../views/cepingguanli"
 import TextManagement from "../views/TextManagement"
+import TextManagement1 from "../views/TextManagement1"
 import CourseRelease from "../views/CourseRelease"
 export default new VueRouter({
     routes:[
@@ -89,6 +90,7 @@ export default new VueRouter({
                 name: "CourseRelease",
                 component: CourseRelease
             }
+            
         ]
     },
     {
@@ -100,6 +102,11 @@ export default new VueRouter({
                 path:"textmanagement",
                 name: "TextManagement",
                 component: TextManagement,
+            },
+            {
+                path:"textmanagement1",
+                name: "TextManagement1",
+                component: TextManagement1,
             }
         ]
     },

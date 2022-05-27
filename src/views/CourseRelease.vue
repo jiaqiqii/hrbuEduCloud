@@ -42,6 +42,12 @@
             </el-row>
         </div>
         <div class="content2"></div>
+        <div class="content3">
+            <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
+                :current-page="currentPage4" :page-sizes="[100, 200, 300, 400]" :page-size="100"
+                layout="total, sizes, prev, pager, next, jumper" :total="400">
+            </el-pagination>
+        </div>
     </div>
 </template>
 
@@ -102,6 +108,7 @@ export default {
             },],
             value6: '',
             input: '',
+            currentPage4: 4
         }
     }
 }
@@ -149,7 +156,7 @@ export default {
             margin-bottom: 20px;
         }
 
-        .el-input{
+        .el-input {
             width: 250px;
             margin-right: 20px;
         }
@@ -160,6 +167,18 @@ export default {
         width: 1000px;
         height: 200px;
         background-color: #fff;
+    }
+
+    .content3 {
+        margin-top: 20px;
+        width: 570px;
+        height: 50px;
+        margin-bottom: 300px;
+        background-color: #fff;
+        float: right;
+        .el-pagination{
+            margin: 10px 0 0 20px;
+        }
     }
 }
 </style>

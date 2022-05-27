@@ -5,6 +5,7 @@
           
           <!-- <li>试卷管理</li> -->
           <router-link to="/cepingguanli/TextManagement" tag="li">测评管理</router-link>
+          <!-- <router-link to="/cepingguanli/TextManagement1" tag="li">试卷管理</router-link> -->
           <li>试卷管理</li>
           <li>成绩与批改</li>
       </ul>
