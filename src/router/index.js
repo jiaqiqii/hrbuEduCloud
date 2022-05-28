@@ -11,18 +11,22 @@ import Forgetpassword from "../views/ForgetPassword"
 import AdminIndex from "../views/AdminIndex"
 // 引入学生端首页
 import StudentIndex from "../views/StudentIndex"
-
+// 引入教务管理页面
 import Menus from "../views/Menus"
-
-import ResourcesMenus from "../views/ResourcesMenus"
 // 引入学生管理页面
 import StuManage from "../views/StuManage"
+// 引入新增学生页面
+import AddStu from "../views/AddStu"
+// 引入教师管理页面
+import TeachManage from  "../views/TeachManage"
+// 引入班级管理页面
+import ClassManage from "../views/ClassManage"
 
+
+import ResourcesMenus from "../views/ResourcesMenus"
 import XitongMenus from "../views/XitongMenus"
 import UserManage from "../views/UserManage"
 import KnowledgeMenus from "../views/KnowledgeMenus"
-
-
 import CourseWare from "../views/CourseWare"
 import caidan1 from "../views/caidan1"
 import cepingguanli from "../views/cepingguanli"
@@ -60,7 +64,22 @@ export default new VueRouter({
                 path:"stumanage",
                 name: "StuManage",
                 component: StuManage,
-            }
+            },
+            {
+                path:"addstu",
+                name: "AddStu",
+                component: AddStu,
+            },
+            {
+                path:"teachmanage",
+                name: "TeachManage",
+                component: TeachManage,
+            },
+            {
+                path:"classmanage",
+                name: "ClassManage",
+                component: ClassManage,
+            },
         ]
     },
     {

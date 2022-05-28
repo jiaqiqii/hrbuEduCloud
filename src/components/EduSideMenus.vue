@@ -2,10 +2,12 @@
   <div class="sidenav">
     <h2>·教务管理</h2>
     <ul>
-      <li>学生管理</li>
-      <li>教师管理</li>
-      <li>班级管理</li>
+      <router-link to="/menus/stumanage" tag="li">学生管理</router-link> 
+      <router-link to="/menus/teachmanage" tag="li">教师管理</router-link> 
+      <router-link to="/menus/classmanage" tag="li">班级管理</router-link> 
+      
     </ul>
+    <!-- <router-view></router-view> -->
   </div>
 </template>
 
@@ -39,14 +41,5 @@ export default {
       padding-left: 20px;
     }
   }
-  // li{
-  //   font-size: 16px;
-  //   color: #262C32;
-  //   padding-left: 25px;
-  //   display: inline-block;
-  //   weight:175px;
-  //   height: 50px;
-  //   background-color: #fff;
-  // }
 }
 </style>
