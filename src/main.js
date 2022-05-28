@@ -21,6 +21,10 @@ import {
   TableColumn,
   Pagination,
   Checkbox,
+  Message,
+  Cascader,
+  Form,
+  FormItem,
 } from 'element-ui';
 Vue.use(Input);
 Vue.use(Button);
@@ -32,6 +36,11 @@ Vue.use(Table);
 Vue.use(TableColumn);
 Vue.use(Pagination);
 Vue.use(Checkbox);
+Vue.use(Cascader);
+Vue.use(Form);
+Vue.use(FormItem);
+
+Vue.prototype.$message = Message;
 
 new Vue({
   render: h => h(App),

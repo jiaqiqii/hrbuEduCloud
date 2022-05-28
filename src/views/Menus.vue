@@ -5,6 +5,7 @@
       <EduSideMenus/>
       <router-view></router-view>
     </div>
+    <Footer></Footer>
   </div>
 </template>
 
@@ -13,11 +14,14 @@ import Header from "../components/Header"
 
 import EduSideMenus from "../components/EduSideMenus"
 
+import Footer from "../components/Footer"
+
 export default {
     name:"myMenus",
     components:{
         Header,
         EduSideMenus,
+        Footer,
     }
 }
 </script>
@@ -26,6 +30,8 @@ export default {
 .stumanage{
     background-color: #f3f5f7;
     height: 100vh;
+    // height: 910px;
+    // display: flex;
     .main{
       display: flex;
       width:1220px;

@@ -2,7 +2,10 @@
   <div class="stumanage">
     <p>学生管理</p>
     <el-row>
-      <el-button type="primary" size="medium">新增学生*</el-button>
+      <router-link to="/menus/addstu" tag="span">
+        <el-button type="primary" size="medium">新增学生*</el-button>
+      </router-link>
+      <!-- <router-view></router-view> -->
       <el-button type="primary" size="medium">批量导入</el-button>
       <el-button
         size="medium"
@@ -80,15 +83,15 @@
         </el-table-column>
         <el-table-column prop="code" label="学籍号" width="100">
         </el-table-column>
-        <el-table-column prop="stuname" label="学生姓名" width="90">
+        <el-table-column prop="stuname" label="学生姓名" width="80">
         </el-table-column>
         <el-table-column prop="gender" label="性别" width="50">
         </el-table-column>
-        <el-table-column prop="class" label="班级" width="100">
+        <el-table-column prop="stuclass" label="班级" width="150">
         </el-table-column>
-        <el-table-column prop="major" label="专业" width="150">
+        <el-table-column prop="major" label="专业" width="120">
         </el-table-column>
-        <el-table-column prop="school" label="学校" width="150">
+        <el-table-column prop="school" label="学校" width="140">
         </el-table-column>
         <el-table-column prop="email" label="邮箱" width="180">
         </el-table-column>
@@ -101,7 +104,7 @@
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
         :current-page="pageNum"
-        :page-sizes="[3, 20, 50]"
+        :page-sizes="[10, 20, 50]"
         :page-size="pageSize"
         layout="total, sizes, prev, pager, next, jumper"
         :total="total"
@@ -147,9 +150,9 @@ export default {
       tableData: [],
       multipleSelection: [],
       currentPage4: 4,
-      total:0,
-      pageSize:3,
-      pageNum : 1,
+      total: 0,
+      pageSize: 10,
+      pageNum: 1,
     };
   },
   mounted() {
@@ -159,18 +162,18 @@ export default {
   methods: {
     getStuInfo(data) {
       const obj = {
-        params:{
+        params: {
           pageNum: this.pageNum,
-          pageSize: this.pageSize
-        }
-      }
+          pageSize: this.pageSize,
+        },
+      };
       if (data) {
-        obj.params = {...obj.params,...data};
+        obj.params = { ...obj.params, ...data };
       }
       axios
         .get("/api/stu/stuinfo", obj)
         .then((response) => {
-          // console.log(response);
+          console.log(response);
           this.tableData = response.data.data.results;
           this.total = response.data.data.total;
           // console.log(this.tableData);
@@ -187,11 +190,11 @@ export default {
       this.multipleSelection = val;
     },
     handleSizeChange(val) {
-      this.pageSize = val
+      this.pageSize = val;
       this.search();
     },
     handleCurrentChange(val) {
-      this.pageNum = val
+      this.pageNum = val;
       this.search();
     },
 
@@ -208,6 +211,18 @@ export default {
           stuIds: stuIdArr,
         })
         .then((response) => {
+          if(response.data.state){
+            this.$message({
+              message: '重置密码成功',
+              type: 'success'
+            });
+          }else{
+            this.$message({
+              message: '重置密码失败',
+              type: 'error'
+            });
+          }
+          
           console.log(response);
         })
         .catch((error) => {
@@ -233,6 +248,16 @@ export default {
           state,
         })
         .then((response) => {
+          const msg = {
+            type: "success",
+          };
+          if (state) {
+            msg.message = "激活用户成功";
+          } else{
+            msg.message = "禁用用户成功";
+          }
+          this.$message(msg);
+          this.search();
           console.log(response);
         })
         .catch((error) => {
@@ -262,9 +287,13 @@ export default {
 .stumanage {
   margin-left: 20px;
   width: 100%;
+  height: (100vh-50px);
   p {
     color: #7a7f85;
     line-height: 56px;
+  }
+  .el-button{
+    margin-left: 5px;
   }
   .content {
     width: 960px;
@@ -291,6 +320,7 @@ export default {
       }
       .el-button {
         margin-left: 15px;
+  
       }
     }
     .el-table {
