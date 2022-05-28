@@ -28,6 +28,8 @@ import caidan1 from "../views/caidan1"
 import cepingguanli from "../views/cepingguanli"
 import TextManagement from "../views/TextManagement"
 import TextManagement1 from "../views/TextManagement1"
+import TextManagement2 from "../views/TextManagement2"
+import TextManagement3 from "../views/TextManagement3"
 import CourseRelease from "../views/CourseRelease"
 export default new VueRouter({
     routes:[
@@ -107,6 +109,16 @@ export default new VueRouter({
                 path:"textmanagement1",
                 name: "TextManagement1",
                 component: TextManagement1,
+            },
+            {
+                path:"textmanagement2",
+                name: "TextManagement2",
+                component: TextManagement2,
+            },
+            {
+                path:"textmanagement3",
+                name: "TextManagement3",
+                component: TextManagement3,
             }
         ]
     },

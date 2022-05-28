@@ -16,7 +16,7 @@
                 <span>关键词</span>
                 <el-input placeholder="请输入内容" v-model="input" clearable>
                 </el-input>
-                <el-button type="primary" size="medium">新建测评</el-button>
+                <el-button  class="xinjian" type="primary" size="medium" to="/textmanagement1">新建测评</el-button>
             </el-row>
 
         </div>

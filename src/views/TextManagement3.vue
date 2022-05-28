@@ -8,39 +8,22 @@
         <div class="content1">
             <el-row>
                 <i class="el-icon-warning"></i>
-                <span class="mingcheng">测评名称不可重复；测评名称、测评分类、测评简介为必填项，正确填写后点击右侧“保存&下一步”</span>
+                <span class="mingcheng">“测评名称”已保存但尚未发布，正确设置班级、时间和分数信息后激活发布按钮。</span>
             </el-row>
         </div>
         <div class="content2">
             <el-row>
                 <div class="one">
-                    <el-button type="text" class="buzhou1">第一步：测评基本信息</el-button>
+                    <li class="buzhou">第一步：测评基本信息</li>
                 </div>
                 <div class="two">
                     <li class="buzhou">第二步：选择试卷</li>
                 </div>
                 <div class="three">
-                    <li class="buzhou">第三步：发布测评</li>
+                    <el-button type="text" class="buzhou1">第三步：发布测评</el-button>
                 </div>
             </el-row>
-            <el-row class="row1">
-                <span>测评名称</span>
-                <el-input v-model="input" placeholder="请输入名称，最多支持30个汉字"></el-input>
-            </el-row>
-            <el-row class="row1">
-                <span>测评分类</span>
-                <el-select v-model="value1" size="medium" placeholder="请选择分类">
-                    <el-option v-for="item in options1" :key="item.value" :label="item.label" :value="item.value">
-                    </el-option>
-                </el-select>
-            </el-row>
-            <el-row class="row1">
-                <span>测评简介</span>
-                <el-input type="textarea" :rows="8" placeholder="填写测评的特征信息，最多支持100个汉字" v-model="textarea" class="shuru">
-                </el-input>
-            </el-row>
         </div>
-
     </div>
 </template>
 <script>
@@ -64,8 +47,6 @@ export default {
                 label: '比赛'
             },],
             value1: '',
-            input: '',
-            textarea: ''
         }
     }
 }
@@ -128,7 +109,7 @@ export default {
         color: #666666;
     }
 
-    .one {
+    .three {
         background-color: #fff;
         width: 240px;
         height: 60px;
@@ -137,14 +118,14 @@ export default {
         border-color: rgba(1, 104, 183, 1);
     }
 
-    .two {
+    .one {
         background-color: #fff;
         width: 240px;
         height: 60px;
         float: left;
     }
 
-    .three {
+    .two {
         background-color: #fff;
         width: 240px;
         height: 60px;
