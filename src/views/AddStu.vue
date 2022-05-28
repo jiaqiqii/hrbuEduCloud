@@ -2,7 +2,6 @@
   <div class="addstu">
     <ul class="title">
       <router-link to="/menus/stumanage" tag="li">学生管理</router-link>
-      <!-- <li>学生管理</li> -->
       <li>></li>
       <li>新增学生</li>
     </ul>
@@ -113,9 +112,6 @@
           </el-form>
         </li>
         <li>
-          <!-- <span>手机号</span>
-          <el-input placeholder="请输入内容"  v-model="phone" clearable>
-          </el-input> -->
           <el-form
             :model="numberValidateForm"
             ref="numberValidateForm"
@@ -167,7 +163,7 @@
       <el-button
         type="primary"
         size="small"
-        @click="submitForm('numberValidateForm','dynamicValidateForm')"
+        @click="submitForm('numberValidateForm', 'dynamicValidateForm')"
         >提交</el-button
       >
       <el-button size="small" @click="cancel">取消</el-button>
@@ -342,32 +338,31 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          alert("提交成功!");
+          axios
+            .post("/api/stu/addstu", {
+              code: this.numberValidateForm.code,
+              stuname: this.numberValidateForm.stuname,
+              gender: this.gender,
+              email: this.dynamicValidateForm.email,
+              phone: this.numberValidateForm.phone,
+              indent: this.numberValidateForm.indent,
+              school: this.value[0],
+              major: this.value[1],
+              stuclass: this.value[2],
+            })
+            .then((response) => {
+              // console.log(data)
+              console.log(response);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+          alert("提交成功!该学生状态已激活，初始密码为123456。");
         } else {
           alert("信息输入不符合要求！");
           return false;
         }
       });
-
-      axios
-        .post("/api/stu/addstu", {
-          code: this.numberValidateForm.code,
-          stuname: this.numberValidateForm.stuname,
-          gender: this.gender,
-          email: this.dynamicValidateForm.email,
-          phone: this.numberValidateForm.phone,
-          indent: this.numberValidateForm.indent,
-          school: this.value[0],
-          major: this.value[1],
-          stuclass: this.value[2],
-        })
-        .then((response) => {
-          // console.log(data)
-          console.log(response);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
     },
     cancel() {
       this.$router.push("/menus/stumanage");
