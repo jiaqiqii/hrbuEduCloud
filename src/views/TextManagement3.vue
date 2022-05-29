@@ -9,6 +9,7 @@
             <el-row>
                 <i class="el-icon-warning"></i>
                 <span class="mingcheng">“测评名称”已保存但尚未发布，正确设置班级、时间和分数信息后激活发布按钮。</span>
+                <el-button type="primary" size="medium" class="tianjia">发布</el-button>
             </el-row>
         </div>
         <div class="content2">
@@ -58,7 +59,15 @@ export default {
 
     .el-button {
         font-size: 16px;
-        color: #2B96E5;
+    }
+
+    .tianjia {
+        float: right;
+        margin-right: 20px;
+        width: 95px;
+        height: 35px;
+        font-size: 14px;
+    color: #FFFFFF;
     }
 
     .xuanze {

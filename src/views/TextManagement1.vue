@@ -9,6 +9,7 @@
             <el-row>
                 <i class="el-icon-warning"></i>
                 <span class="mingcheng">测评名称不可重复；测评名称、测评分类、测评简介为必填项，正确填写后点击右侧“保存&下一步”</span>
+                <el-button type="primary" size="medium">保存&下一步</el-button>
             </el-row>
         </div>
         <div class="content2">
@@ -38,6 +39,7 @@
                 <span>测评简介</span>
                 <el-input type="textarea" :rows="8" placeholder="填写测评的特征信息，最多支持100个汉字" v-model="textarea" class="shuru">
                 </el-input>
+
             </el-row>
         </div>
 
@@ -77,7 +79,12 @@ export default {
 
     .el-button {
         font-size: 16px;
-        color: #2B96E5;
+        float: right;
+        margin-right: 20px;
+        width: 120px;
+        height: 35px;
+        font-size: 14px;
+        color: #FFFFFF;
     }
 
     .xuanze {

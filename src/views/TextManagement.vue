@@ -16,7 +16,9 @@
                 <span>关键词</span>
                 <el-input placeholder="请输入内容" v-model="input" clearable>
                 </el-input>
+                <router-link to="/cepingguanli/TextManagement1" tag="li">
                 <el-button  class="xinjian" type="primary" size="medium" to="/textmanagement1">新建测评</el-button>
+                </router-link>
             </el-row>
 
         </div>
@@ -118,6 +120,9 @@ export default {
             line-height: 36px;
             margin-right: 10px;
             margin-left: 20px;
+        }
+        .router-link{
+            float: left;
         }
 }
 </style>
