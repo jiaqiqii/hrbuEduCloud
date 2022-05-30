@@ -28,6 +28,8 @@ import XitongMenus from "../views/XitongMenus"
 import UserManage from "../views/UserManage"
 import KnowledgeMenus from "../views/KnowledgeMenus"
 import CourseWare from "../views/CourseWare"
+import NewCourseware from "../views/NewCourseware"
+import SetupInformation from "../views/SetupInformation"
 import caidan1 from "../views/caidan1"
 import cepingguanli from "../views/cepingguanli"
 import shijuanguanli from "../views/shijuanguanli"
@@ -182,6 +184,32 @@ export default new VueRouter({
             }
         ]
 
-    }
+    },
+    {
+        path:"/resourcesmenus",
+        name: "ResourcesMenus",
+        component:ResourcesMenus,
+        children:[
+            {
+                path:"newcourseware",  //子集不能写/
+                name: "NewCourseware",
+                component:NewCourseware
+            }
+        ]
+
+    },
+    {
+        path:"/resourcesmenus",
+        name: "ResourcesMenus",
+        component:ResourcesMenus,
+        children:[
+            {
+                path:"setupinformation",  //子集不能写/
+                name: "SetupInformation",
+                component:SetupInformation
+            }
+        ]
+
+    },
 ]
 })
