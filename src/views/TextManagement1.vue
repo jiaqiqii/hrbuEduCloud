@@ -9,7 +9,7 @@
             <el-row>
                 <i class="el-icon-warning"></i>
                 <span class="mingcheng">测评名称不可重复；测评名称、测评分类、测评简介为必填项，正确填写后点击右侧“保存&下一步”</span>
-                <el-button type="primary" size="medium">保存&下一步</el-button>
+                <el-button type="primary" size="medium"><router-link to="/cepingguanli/TextManagement2" tag="li">保存&下一步</router-link></el-button>
             </el-row>
         </div>
         <div class="content2">

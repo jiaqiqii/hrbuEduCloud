@@ -9,7 +9,7 @@
             <el-row>
                 <i class="el-icon-warning"></i>
                 <span class="mingcheng">“测评名称”已保存但尚未发布，请为测评选择一个试卷，然后点击右侧“保存&下一步”。</span>
-                <el-button type="primary" size="medium" class="tianjia">添加&下一步</el-button>
+                <el-button type="primary" size="medium" class="tianjia"><router-link to="/cepingguanli/TextManagement3" tag="li">添加&下一步</router-link></el-button>
             </el-row>
         </div>
         <div class="content2">

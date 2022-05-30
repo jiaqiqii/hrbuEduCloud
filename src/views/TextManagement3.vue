@@ -9,7 +9,7 @@
             <el-row>
                 <i class="el-icon-warning"></i>
                 <span class="mingcheng">“测评名称”已保存但尚未发布，正确设置班级、时间和分数信息后激活发布按钮。</span>
-                <el-button type="primary" size="medium" class="tianjia">发布</el-button>
+                <el-button type="primary" size="medium" class="tianjia"><router-link to="/shijuanguanli/TextPaper" tag="li">发布</router-link></el-button>
             </el-row>
         </div>
         <div class="content2">
