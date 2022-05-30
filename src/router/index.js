@@ -27,6 +27,7 @@ import ResourcesMenus from "../views/ResourcesMenus"
 import XitongMenus from "../views/XitongMenus"
 import UserManage from "../views/UserManage"
 import KnowledgeMenus from "../views/KnowledgeMenus"
+import RoleManage from "../views/RoleManage"
 import CourseWare from "../views/CourseWare"
 import NewCourseware from "../views/NewCourseware"
 import SetupInformation from "../views/SetupInformation"
@@ -102,6 +103,11 @@ export default new VueRouter({
                 path:"knowledgemenus",
                 name: "KnowledgeMenus",
                 component: KnowledgeMenus
+            },
+            {
+                path:"rolemanage",
+                name: "RoleManage",
+                component: RoleManage
             },
         ]
     },
