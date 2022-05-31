@@ -1,5 +1,5 @@
 <template>
-  <div class="addstu">
+  <div class="stuadd">
     <ul class="title">
       <router-link to="/menus/stumanage" tag="li">学生管理</router-link>
       <li>></li>
@@ -174,7 +174,7 @@
 <script>
 import axios from "axios";
 export default {
-  name: "AddStu",
+  name: "StuAdd",
   data() {
     return {
       value: [],
@@ -372,7 +372,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.addstu {
+.stuadd {
   width: 100%;
   // height: (100vh+65px);
   // height: 860px;

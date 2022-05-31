@@ -2,7 +2,7 @@
   <div class="stumanage">
     <p>学生管理</p>
     <el-row>
-      <router-link to="/menus/addstu" tag="span">
+      <router-link to="/menus/stuadd" tag="span">
         <el-button type="primary" size="medium">新增学生*</el-button>
       </router-link>
       <!-- <router-view></router-view> -->
@@ -76,14 +76,16 @@
         :data="tableData"
         tooltip-effect="dark"
         style="width: 100%"
+        @cell-dblclick="stucheck"
         @selection-change="handleSelectionChange"
+        
       >
         <el-table-column type="selection" width="40"> </el-table-column>
         <el-table-column type="index" label="序号" width="50">
         </el-table-column>
         <el-table-column prop="code" label="学籍号" width="100">
         </el-table-column>
-        <el-table-column prop="stuname" label="学生姓名" width="80">
+        <el-table-column prop="stuname" label="学生姓名"  width="80">
         </el-table-column>
         <el-table-column prop="gender" label="性别" width="50">
         </el-table-column>
@@ -279,6 +281,16 @@ export default {
       }
       this.getStuInfo(data);
     },
+
+    // 跳转到查看学生信息页面
+    stucheck(val){
+      console.log("val",val);
+      this.multipleSelection = val;
+      this.$router.push({
+        name:"StuCheck",
+        query:{...this.multipleSelection},
+      });
+    }
   },
 };
 </script>

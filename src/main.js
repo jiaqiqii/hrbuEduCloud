@@ -25,6 +25,12 @@ import {
   Cascader,
   Form,
   FormItem,
+  Col,
+  Avatar,
+  Descriptions,
+  Tag,
+  DescriptionsItem,
+  // DescriptionItem,
 } from 'element-ui';
 Vue.use(Input);
 Vue.use(Button);
@@ -39,6 +45,11 @@ Vue.use(Checkbox);
 Vue.use(Cascader);
 Vue.use(Form);
 Vue.use(FormItem);
+Vue.use(Col);
+Vue.use(Avatar);
+Vue.use(Descriptions);
+Vue.use(Tag);
+Vue.use(DescriptionsItem);
 
 Vue.prototype.$message = Message;
 
