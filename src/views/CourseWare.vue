@@ -34,7 +34,7 @@
                 >
                 </el-input>
                 <el-button type="primary" size="medium">搜索</el-button>
-                <el-button type="primary" size="medium">新增课件</el-button>
+                <el-button type="primary" size="medium" @click="NewCourseware">新增课件</el-button>
             </el-row>
         </div>
       
@@ -153,6 +153,11 @@ export default {
       currentPage4: 4,
     };
   },
+   methods:{
+      NewCourseware(){
+          this.$router.replace('NewCourseware')
+      },
+  }
 };
 </script>
 

@@ -26,6 +26,7 @@ import TeachManage from "../views/TeachManage";
 // 引入班级管理页面
 import ClassManage from "../views/ClassManage";
 
+<<<<<<< HEAD
 import ResourcesMenus from "../views/ResourcesMenus";
 import XitongMenus from "../views/XitongMenus";
 import UserManage from "../views/UserManage";
@@ -36,6 +37,26 @@ import cepingguanli from "../views/cepingguanli";
 import TextManagement from "../views/TextManagement";
 import TextManagement1 from "../views/TextManagement1";
 import CourseRelease from "../views/CourseRelease";
+=======
+
+import ResourcesMenus from "../views/ResourcesMenus"
+import XitongMenus from "../views/XitongMenus"
+import UserManage from "../views/UserManage"
+import KnowledgeMenus from "../views/KnowledgeMenus"
+import RoleManage from "../views/RoleManage"
+import CourseWare from "../views/CourseWare"
+import NewCourseware from "../views/NewCourseware"
+import SetupInformation from "../views/SetupInformation"
+import caidan1 from "../views/caidan1"
+import cepingguanli from "../views/cepingguanli"
+import shijuanguanli from "../views/shijuanguanli"
+import TextManagement from "../views/TextManagement"
+import TextManagement1 from "../views/TextManagement1"
+import TextManagement2 from "../views/TextManagement2"
+import TextManagement3 from "../views/TextManagement3"
+import TextPaper from "../views/TextPaper"
+import CourseRelease from "../views/CourseRelease"
+>>>>>>> fb3d1873fec5ca06c29f958b5a703824dfbd0a6d
 export default new VueRouter({
   routes: [
     {
@@ -96,6 +117,7 @@ export default new VueRouter({
       ],
     },
     {
+<<<<<<< HEAD
       path: "/xitongmenus",
       name: "XitongMenus",
       component: XitongMenus,
@@ -111,6 +133,28 @@ export default new VueRouter({
           component: KnowledgeMenus,
         },
       ],
+=======
+        path:"/xitongmenus",
+        name: "XitongMenus",
+        component: XitongMenus,
+        children:[
+            {
+                path:"usermanage",
+                name: "UserManage",
+                component: UserManage
+            },
+            {
+                path:"knowledgemenus",
+                name: "KnowledgeMenus",
+                component: KnowledgeMenus
+            },
+            {
+                path:"rolemanage",
+                name: "RoleManage",
+                component: RoleManage
+            },
+        ]
+>>>>>>> fb3d1873fec5ca06c29f958b5a703824dfbd0a6d
     },
     {
       path: "/caidan1",
@@ -125,6 +169,7 @@ export default new VueRouter({
       ],
     },
     {
+<<<<<<< HEAD
       path: "/cepingguanli",
       name: "cepingguanli",
       component: cepingguanli,
@@ -155,3 +200,99 @@ export default new VueRouter({
     },
   ],
 });
+=======
+        path:"/cepingguanli",
+        name: "cepingguanli",
+        component: cepingguanli,
+        children:[
+            {
+                path:"textmanagement",
+                name: "TextManagement",
+                component: TextManagement,
+            },
+            {
+                path:"textmanagement1",
+                name: "TextManagement1",
+                component: TextManagement1,
+            },
+            {
+                path:"textmanagement2",
+                name: "TextManagement2",
+                component: TextManagement2,
+            },
+            {
+                path:"textmanagement3",
+                name: "TextManagement3",
+                component: TextManagement3,
+            }
+        ]
+    },
+    {
+        path:"/shijuanguanli",
+        name: "sjijuanguanli",
+        component: shijuanguanli,
+        children:[
+            {
+                path:"textpaper",
+                name: "TextPaper",
+                component: TextPaper,
+            },
+            // {
+            //     path:"textmanagement1",
+            //     name: "TextManagement1",
+            //     component: TextManagement1,
+            // },
+            // {
+            //     path:"textmanagement2",
+            //     name: "TextManagement2",
+            //     component: TextManagement2,
+            // },
+            // {
+            //     path:"textmanagement3",
+            //     name: "TextManagement3",
+            //     component: TextManagement3,
+            // }
+        ]
+    },
+    {
+        path:"/resourcesmenus",
+        name: "ResourcesMenus",
+        component:ResourcesMenus,
+        children:[
+            {
+                path:"courseware",  
+                name: "CourseWare",
+                component:CourseWare
+            }
+        ]
+
+    },
+    {
+        path:"/resourcesmenus",
+        name: "ResourcesMenus",
+        component:ResourcesMenus,
+        children:[
+            {
+                path:"newcourseware",  //子集不能写/
+                name: "NewCourseware",
+                component:NewCourseware
+            }
+        ]
+
+    },
+    {
+        path:"/resourcesmenus",
+        name: "ResourcesMenus",
+        component:ResourcesMenus,
+        children:[
+            {
+                path:"setupinformation",  //子集不能写/
+                name: "SetupInformation",
+                component:SetupInformation
+            }
+        ]
+
+    },
+]
+})
+>>>>>>> fb3d1873fec5ca06c29f958b5a703824dfbd0a6d
