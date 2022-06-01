@@ -33,8 +33,14 @@ import KnowledgeMenus from "../views/KnowledgeMenus";
 import CourseWare from "../views/CourseWare";
 import caidan1 from "../views/caidan1";
 import cepingguanli from "../views/cepingguanli";
+import shijuanguanli from "../views/shijuanguanli";
 import TextManagement from "../views/TextManagement";
 import TextManagement1 from "../views/TextManagement1";
+import TextManagement2 from "../views/TextManagement2";
+import TextManagement3 from "../views/TextManagement3";
+import TextPaper from "../views/TextPaper";
+import TextPaper1 from "../views/TextPaper1";
+import TextPaper2 from "../views/TextPaper2";
 import CourseRelease from "../views/CourseRelease";
 export default new VueRouter({
   routes: [
@@ -138,6 +144,37 @@ export default new VueRouter({
           path: "textmanagement1",
           name: "TextManagement1",
           component: TextManagement1,
+        },
+        {
+          path: "textmanagement2",
+          name: "TextManagement2",
+          component: TextManagement2,
+        },{
+          path: "textmanagement3",
+          name: "TextManagement3",
+          component: TextManagement3,
+        },
+      ],
+    },
+    {
+      path: "/shijuanguanli",
+      name: "shijuanguanli",
+      component: shijuanguanli,
+      children: [
+        {
+          path: "textpaper",
+          name: "TextPaper",
+          component: TextPaper,
+        },
+        {
+          path: "textpaper1",
+          name: "TextPaper1",
+          component: TextPaper1,
+        },
+        {
+          path: "textpaper2",
+          name: "TextPaper2",
+          component: TextPaper2,
         },
       ],
     },

@@ -18,7 +18,7 @@
                 <el-input placeholder="请输入内容" v-model="input" clearable>
                 </el-input>
                 <el-button class="xinjian" type="primary" size="medium" to="/textmanagement1">
-                    <router-link to="/cepingguanli/TextManagement1" tag="li">新建试卷</router-link>
+                    <router-link to="/shijuanguanli/TextPaper1" tag="li">新建试卷</router-link>
                 </el-button>
             </el-row>
 

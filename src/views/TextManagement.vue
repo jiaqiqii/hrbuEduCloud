@@ -9,7 +9,7 @@
                     </el-option>
                 </el-select>
                 <span>状态</span>
-                <el-select v-model="value1" size="medium" placeholder="全部">
+                <el-select v-model="value2" size="medium" placeholder="全部">
                     <el-option v-for="item in options2" :key="item.value" :label="item.label" :value="item.value">
                     </el-option>
                 </el-select>

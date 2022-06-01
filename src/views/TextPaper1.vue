@@ -1,47 +1,60 @@
 <template>
     <div class="cepingtext1">
         <el-row class="xuanze">
-            <el-button type="text">测评管理</el-button>
+            <el-button type="text">试卷管理</el-button>
             <span class="xinjian">></span>
-            <span class="xinjian">新建测评</span>
+            <span class="xinjian">新建试卷</span>
         </el-row>
         <div class="content1">
             <el-row>
                 <i class="el-icon-warning"></i>
-                <span class="mingcheng">测评名称不可重复；测评名称、测评分类、测评简介为必填项，正确填写后点击右侧“保存&下一步”</span>
+                <span class="mingcheng">试卷名称、试卷分类、试卷类型、试卷简介为必填项，正确填写后点击右侧“保存&下一步”进行组卷；</span>
                 <el-button type="primary" size="medium">
-                    <router-link to="/cepingguanli/TextManagement2" tag="li">保存&下一步</router-link>
+                    <router-link to="/shijuanguanli/TextPaper2" tag="li">保存&下一步</router-link>
                 </el-button>
             </el-row>
         </div>
         <div class="content2">
             <el-row>
                 <div class="one">
-                    <el-button type="text" class="buzhou1">第一步：测评基本信息</el-button>
+                    <el-button type="text" class="buzhou1">第一步：试卷基本信息</el-button>
                 </div>
                 <div class="two">
-                    <li class="buzhou">第二步：选择试卷</li>
-                </div>
-                <div class="three">
-                    <li class="buzhou">第三步：发布测评</li>
+                    <li class="buzhou">第二步：组卷</li>
                 </div>
             </el-row>
             <el-row class="row1">
-                <span>测评名称</span>
+                <span>试卷名称</span>
                 <el-input v-model="input" placeholder="请输入名称，最多支持30个汉字"></el-input>
             </el-row>
             <el-row class="row1">
-                <span>测评分类</span>
-                <el-select v-model="value1" size="medium" placeholder="请选择分类">
+                <span>试卷分类</span>
+                <el-select v-model="value1" size="medium" placeholder="请选择">
                     <el-option v-for="item in options1" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                </el-select>
+                <el-select v-model="value2" size="medium" placeholder="请选择">
+                    <el-option v-for="item in options2" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                </el-select>
+                <el-select v-model="value3" size="medium" placeholder="请选择">
+                    <el-option v-for="item in options3" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                </el-select>
+
+            </el-row>
+
+            <el-row class="row1">
+                <span>试卷形式</span>
+                <el-select v-model="value4" size="medium" placeholder="请选择分类">
+                    <el-option v-for="item in options4" :key="item.value" :label="item.label" :value="item.value">
                     </el-option>
                 </el-select>
             </el-row>
             <el-row class="row1">
-                <span>测评简介</span>
+                <span>试卷简介</span>
                 <el-input type="textarea" :rows="8" placeholder="填写测评的特征信息，最多支持100个汉字" v-model="textarea" class="shuru">
                 </el-input>
-
             </el-row>
         </div>
 
@@ -52,8 +65,44 @@ export default {
     data() {
         return {
             options1: [{
+                value1: '选项1',
+                label: '请选择'
+            }, {
+                value1: '选项2',
+                label: 'IT互联网'
+            }, {
+                value1: '选项3',
+                label: '物联网'
+            }, ],
+            value1: '',
+            options2: [{
+                value2: '选项1',
+                label: '请选择'
+            }, {
+                value2: '选项2',
+                label: '大数据'
+            }, {
+                value2: '选项3',
+                label: '后端开发'
+            }, {
+                value2: '选项4',
+                label: '前端开发'
+            }, ],
+            value2: '',
+            options3: [{
                 value: '选项1',
-                label: '请选择分类'
+                label: '请选择'
+            }, {
+                value: '选项2',
+                label: 'HTML/CSS'
+            }, {
+                value: '选项3',
+                label: 'JavaScript'
+            },  ],
+            value3: '',
+            options4: [{
+                value: '选项1',
+                label: '请选择'
             }, {
                 value: '选项2',
                 label: '练习'
@@ -67,7 +116,7 @@ export default {
                 value: '选项5',
                 label: '比赛'
             },],
-            value1: '',
+            value4: '',
             input: '',
             textarea: ''
         }
@@ -171,12 +220,6 @@ export default {
         float: left;
     }
 
-    .three {
-        background-color: #fff;
-        width: 240px;
-        height: 60px;
-        float: left;
-    }
 
     .buzhou1 {
         color: rgb(1, 104, 183);
