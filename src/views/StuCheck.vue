@@ -87,7 +87,6 @@ export default {
         "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png",
       size: "",
       stuData: {},
-      k: 1,
     };
   },
   mounted() {
@@ -96,24 +95,6 @@ export default {
     //   this.getstuinfo(data);
     // });
     this.getStuInfo();
-
-    // console.log(this.$route.query);
-    // const obj = {
-    //   params: {
-    //     id: this.$route.query.id,
-    //   },
-    // };
-    // axios
-    //   .get("/api/stu/stucheck", obj)
-    //   .then((response) => {
-    //     console.log(response);
-    //     this.stuData = response.data.data.results[0];
-    //     console.log(this.stuData);
-    //     console.log(this.stuData.school);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
   },
   methods: {
 
@@ -127,8 +108,9 @@ export default {
     axios
       .get("/api/stu/stucheck", obj)
       .then((response) => {
-        console.log(response);
+        console.log(response.data.data);
         this.stuData = response.data.data.results[0];
+
         console.log(this.stuData);
         console.log(this.stuData.school);
       })

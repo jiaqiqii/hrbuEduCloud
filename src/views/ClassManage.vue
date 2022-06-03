@@ -56,6 +56,7 @@
         :data="tableData"
         tooltip-effect="dark"
         style="width: 100%"
+        @cell-dblclick="classCheck"
         @selection-change="handleSelectionChange"
       >
         <el-table-column type="selection" width="40"></el-table-column>
@@ -147,7 +148,6 @@ export default {
       if(data){
         obj.params = {...obj.params,...data};
       }
-      console.log("obj",obj)
       axios
         .get("/api/class/classinfo",obj)
         .then((response) => {
@@ -225,10 +225,19 @@ export default {
       console.log("data",data)
       this.getClassInfo(data);
     },
-
+// 跳转到新增班级页面
     addclass(){
       this.$router.push({
         name:"ClassAdd",
+      });
+    },
+
+// 跳转到到查看班级信息页面
+    classCheck(val){
+      this.multipleSelection = val;
+      this.$router.push({
+        name:"ClassCheck",
+        query:{...this.multipleSelection},
       });
     }
   },
