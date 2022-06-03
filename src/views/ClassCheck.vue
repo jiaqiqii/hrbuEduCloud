@@ -7,8 +7,10 @@
       <span>></span>
       <span>班级信息</span>
       <el-row>
-        <el-button @click="disable(0)"  size="medium">结课</el-button>
-        <el-button @click="disable(1)"  size="medium">激活</el-button>
+        <el-button @click="disable(0)" size="medium"
+        :disabled="!classData.state === '有效' ? 1 : 0">结课</el-button>
+        <el-button @click="disable(1)" size="medium"
+        :disabled="classData.state === '有效' ? 1 : 0">激活</el-button>
       </el-row>
     </div>
 
