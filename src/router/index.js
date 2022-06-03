@@ -25,6 +25,8 @@ import StuEdit from "../views/StuEdit";
 import TeachManage from "../views/TeachManage";
 // 引入班级管理页面
 import ClassManage from "../views/ClassManage";
+// 引入新增班级页面
+import ClassAdd from "../views/ClassAdd";
 
 import ResourcesMenus from "../views/ResourcesMenus";
 import XitongMenus from "../views/XitongMenus";
@@ -98,6 +100,11 @@ export default new VueRouter({
           path: "classmanage",
           name: "ClassManage",
           component: ClassManage,
+        },
+        {
+          path: "classadd",
+          name: "ClassAdd",
+          component: ClassAdd,
         },
       ],
     },

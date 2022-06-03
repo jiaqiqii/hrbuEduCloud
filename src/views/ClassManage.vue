@@ -2,7 +2,7 @@
   <div class="classmanage">
     <p>班级管理</p>
     <el-row>
-      <el-button type="primary" size="medium">新增班级*</el-button>
+      <el-button type="primary" @click="addclass" size="medium">新增班级*</el-button>
       <el-button @click="disable(0)" size="medium" :disabled="!multipleSelection.length">结课</el-button>
       <el-button size="medium" @click="disable(1)" :disabled="!multipleSelection.length">激活</el-button>
     </el-row>
@@ -224,6 +224,12 @@ export default {
       }
       console.log("data",data)
       this.getClassInfo(data);
+    },
+
+    addclass(){
+      this.$router.push({
+        name:"ClassAdd",
+      });
     }
   },
 };
