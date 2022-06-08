@@ -9,7 +9,9 @@
             <el-row>
                 <i class="el-icon-warning"></i>
                 <span class="mingcheng">“测评名称”已保存但尚未发布，请为测评选择一个试卷，然后点击右侧“保存&下一步”。</span>
-                <el-button type="primary" size="medium" class="tianjia"><router-link to="/cepingguanli/TextManagement3" tag="li">添加&下一步</router-link></el-button>
+                <el-button type="primary" size="medium" class="tianjia">
+                    <router-link to="/cepingguanli/TextManagement3" tag="li">添加&下一步</router-link>
+                </el-button>
             </el-row>
         </div>
         <div class="content2">
@@ -45,24 +47,28 @@
                 @selection-change="handleSelectionChange">
                 <el-table-column type="selection" width="55">
                 </el-table-column>
-                <el-table-column prop="name" label="名称" width="200">
+                <el-table-column prop="name" label="试卷名称" width="200">
                 </el-table-column>
-                <el-table-column prop="name" label="试卷类别" width="100">
+                <el-table-column prop="leibie" label="试卷类别" width="100">
                 </el-table-column>
-                <el-table-column prop="name" label="试卷分类" width="80">
+                <el-table-column prop="fenlei" label="试卷分类" width="80">
                 </el-table-column>
-                <el-table-column prop="name" label="总分" width="80">
+                <el-table-column prop="zongfen" label="总分" width="80">
                 </el-table-column>
-                <el-table-column prop="name" label="题目数量" width="100">
+                <el-table-column prop="shuliang" label="题目数量" width="100">
                 </el-table-column>
-                <el-table-column prop="name" label="创建人" width="160">
+                <el-table-column prop="people" label="创建人" width="80">
                 </el-table-column>
-                <el-table-column prop="address" label="地址" show-overflow-tooltip>
-                </el-table-column>
-                <el-table-column label="日期" width="120">
+                <el-table-column label="日期" width="200">
                     <template slot-scope="scope">{{ scope.row.date }}</template>
                 </el-table-column>
             </el-table>
+            <div class="content3">
+                <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
+                    :current-page="currentPage4" :page-sizes="[100, 200, 300, 400]" :page-size="100"
+                    layout="total, sizes, prev, pager, next, jumper" :total="400">
+                </el-pagination>
+            </div>
         </div>
 
     </div>
@@ -102,35 +108,31 @@ export default {
             value2: '',
             input: '',
             tableData: [
-            //     {
-            //     date: '2016-05-03',
-            //     name: '王小虎',
-            //     address: '上海市普陀区金沙江路 1518 弄'
-            // }, {
-            //     date: '2016-05-02',
-            //     name: '王小虎',
-            //     address: '上海市普陀区金沙江路 1518 弄'
-            // }, {
-            //     date: '2016-05-04',
-            //     name: '王小虎',
-            //     address: '上海市普陀区金沙江路 1518 弄'
-            // }, {
-            //     date: '2016-05-01',
-            //     name: '王小虎',
-            //     address: '上海市普陀区金沙江路 1518 弄'
-            // }, {
-            //     date: '2016-05-08',
-            //     name: '王小虎',
-            //     address: '上海市普陀区金沙江路 1518 弄'
-            // }, {
-            //     date: '2016-05-06',
-            //     name: '王小虎',
-            //     address: '上海市普陀区金沙江路 1518 弄'
-            // }, {
-            //     date: '2016-05-07',
-            //     name: '王小虎',
-            //     address: '上海市普陀区金沙江路 1518 弄'
-            // }
+                {
+                    name: 'Web前端基础知识测评',
+                    leibie: '自定义试卷',
+                    fenlei: '练习',
+                    zongfen: '100',
+                    shuliang: '20',
+                    people: '张三丰',
+                    date: '2018-10 - 10 09: 00: 00',
+                }, {
+                    name: 'Web前端阶段一水平测试',
+                    leibie: '模板试卷',
+                    fenlei: '考试',
+                    zongfen: '90',
+                    shuliang: '15',
+                    people: '刘备',
+                    date: '2018-10 - 10 09: 00: 00',
+                }, {
+                    name: '',
+                    leibie: '',
+                    fenlei: '',
+                    zongfen: '',
+                    shuliang: '',
+                    people: '',
+                    date: '',
+                },
             ],
             multipleSelection: []
         }
@@ -273,23 +275,40 @@ export default {
     }
 
     .el-table {
-      margin-top: 20px;
-      width: 950px;
-      /deep/.el-table__header-wrapper {
-        .el-table__cell {
-          background-color: #f3f5f7;
+        margin-top: 20px;
+        width: 950px;
+
+        /deep/.el-table__header-wrapper {
+            .el-table__cell {
+                background-color: #f3f5f7;
+            }
         }
-      }
-      /deep/ .el-table__cell {
-        padding: 6px 0;
-        border-left: 1px solid #ebeef5;
-        &:last-child {
-          border-right: 1px solid #ebeef5;
+
+        /deep/ .el-table__cell {
+            padding: 6px 0;
+            border-left: 1px solid #ebeef5;
+
+            &:last-child {
+                border-right: 1px solid #ebeef5;
+            }
         }
-      }
-      .cell {
-        padding: 0px;
-      }
+
+        .cell {
+            padding: 0px;
+        }
+    }
+    .content3 {
+        margin-top: 20px;
+        width: 570px;
+        height: 50px;
+        margin-bottom: 300px;
+        margin-top: 100px;
+        background-color: #fff;
+        float: right;
+
+        .el-pagination {
+            margin: 10px 0 0 20px;
+        }
     }
 }
 </style>

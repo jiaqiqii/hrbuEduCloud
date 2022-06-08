@@ -5,18 +5,21 @@
         <CaiDan />
         <router-view></router-view>
       </div>
+      <Footer></Footer>
   </div>
 </template>
 
 <script>
 import Header from "../components/Header"
 import CaiDan from "../components/CaiDan"
+import Footer from "../components/Footer"
 
 export default {
   name: "caiMenus",
   components:{
     Header,
     CaiDan,
+    Footer,
   }
 }
 </script>

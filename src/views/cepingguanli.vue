@@ -5,16 +5,19 @@
             <CePing />
             <router-view></router-view>
         </div>
+        <Footer></Footer>
     </div>
 </template>
 <script>
 import Header from "../components/Header"
 import CePing from "../components/CePing"
+import Footer from "../components/Footer"
 export default {
     name: "cepingMenus",
     components: {
         Header,
         CePing,
+        Footer,
     }
 }
 </script>

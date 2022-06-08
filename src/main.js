@@ -29,6 +29,7 @@ import {
   Descriptions,
   Tag,
   DescriptionsItem,
+  Radio,
   // DescriptionItem,
 } from 'element-ui';
 Vue.use(Input);
@@ -49,6 +50,7 @@ Vue.use(Avatar);
 Vue.use(Descriptions);
 Vue.use(Tag);
 Vue.use(DescriptionsItem);
+Vue.use(Radio);
 
 Vue.prototype.$message = Message;
 

@@ -23,7 +23,56 @@
 
         </div>
         <div class="content2">
-
+            <p>Web前端基础知识测评</p>
+            <li><span class="fabu">草稿</span>
+                <span class="time">创建时间：2019-04-19 16:14:44</span>
+                <span class="people">创建人：张三丰</span>
+            </li>
+            <el-button type="primary" plain size="mini">编辑</el-button>
+            <el-button type="primary" plain size="mini">删除</el-button>
+        </div>
+        <div class="content4">
+            <p>Web前端阶段一水平测试</p>
+            <li><span class="fabu">已发布</span>
+                <span class="fabu1">考试</span>
+                <span class="people">总分：100.0分</span>
+                <span class="people">题目：共10题</span>
+                <span class="people">创建人：张三丰</span>
+                <span class="people1">开始时间：2018-11-01 12:00</span>
+                <span class="people">结束时间：2018-11-03 12:00</span>
+            </li>
+            <el-button type="primary" plain size="mini">编辑</el-button>
+            <el-button type="primary" plain size="mini">删除</el-button>
+            <el-button plain disabled size="mini">批改</el-button>
+            <el-button plain disabled size="mini">查看成绩</el-button>
+        </div>
+        <div class="content5">
+            <p>Web前端阶段一水平测试</p>
+            <li><span class="fabu">已发布</span>
+                <span class="fabu1">考试</span>
+                <span class="people">总分：100.0分</span>
+                <span class="people">题目：共10题</span>
+                <span class="people">创建人：张三丰</span>
+                <span class="people1">开始时间：2018-11-01 12:00</span>
+                <span class="people">结束时间：2018-11-03 12:00</span>
+            </li>
+            <el-button type="primary" plain size="mini">编辑</el-button>
+            <el-button type="primary" plain size="mini">删除</el-button>
+            <el-button type="primary" plain size="mini">批改</el-button>
+            <el-button type="primary" plain size="mini">查看成绩</el-button>
+        </div>
+        <div class="content6">
+            <p>Web前端阶段一水平测试</p>
+            <li><span class="fabu">已结束</span>
+                <span class="fabu1">考试</span>
+                <span class="people">总分：100.0分</span>
+                <span class="people">题目：共10题</span>
+                <span class="people">创建人：张三丰</span>
+                <span class="people1">开始时间：2018-11-01 12:00</span>
+                <span class="people">结束时间：2018-11-03 12:00</span>
+            </li>
+            <el-button type="primary" plain size="mini">编辑</el-button>
+            <el-button type="primary" plain size="mini">删除</el-button>
         </div>
         <div class="content3">
             <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
@@ -89,11 +138,229 @@ export default {
     }
 
     .content1 {
-        width: 980px;
+        width: 940px;
         height: 35px;
         background-color: #fff;
         padding: 20px;
         border-radius: 4px;
+        margin-bottom: 20px;
+    }
+
+    .content2 {
+        width: 480px;
+        height: 200px;
+        background-color: #fff;
+        float: left;
+        border-left: 5px solid;
+        border-color: rgb(212, 214, 215);
+        border-radius: 4px;
+
+        p {
+            font-size: 20px;
+            color: #2B96E5;
+            font-style: normal;
+            margin: 10px 0 0 30px;
+        }
+
+        .fabu {
+            font-size: 12px;
+            color: #FFFFFF;
+            text-align: center;
+            background-color: #262C32;
+            margin-right: 10px;
+            margin-left: 32px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .time {
+            font-size: 12px;
+            color: #7A7F85;
+            line-height: 18px;
+        }
+
+        .people {
+            font-size: 12px;
+            color: #7A7F85;
+            line-height: 18px;
+        }
+
+        .el-button {
+            margin: 45px 0 0 20px;
+        }
+    }
+
+    .content4 {
+        width: 480px;
+        height: 200px;
+        background-color: #ffffff;
+        float: left;
+        margin-left: 20px;
+        border-left: 5px solid;
+        border-color: rgb(80, 143, 174);
+        border-radius: 4px;
+
+        p {
+            font-size: 20px;
+            color: #2B96E5;
+            font-style: normal;
+            margin: 10px 0 0 30px;
+        }
+
+        .fabu {
+            font-size: 12px;
+            color: #FFFFFF;
+            text-align: center;
+            background-color: #262C32;
+            margin-right: 1px;
+            margin-left: 32px;
+        }
+        .fabu1 {
+            font-size: 14px;
+            color: #7A7F85;
+            text-align: center;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .time {
+            font-size: 12px;
+            color: #7A7F85;
+            line-height: 18px;
+        }
+
+        .people {
+            font-size: 12px;
+            color: #7A7F85;
+            line-height: 18px;
+        }
+        .people1 {
+            font-size: 12px;
+            color: #7A7F85;
+            line-height: 18px;
+            margin-left: 30px;
+        }
+
+        .el-button {
+            margin: 30px 0 0 20px;
+        }
+    }
+
+    .content5 {
+        width: 480px;
+        height: 200px;
+        background-color: #ffffff;
+        float: left;
+        margin: 20px 0 0 0;
+        border-left: 5px solid;
+        border-color: rgb(80, 143, 174);
+        border-radius: 4px;
+        p {
+            font-size: 20px;
+            color: #2B96E5;
+            font-style: normal;
+            margin: 10px 0 0 30px;
+        }
+
+        .fabu {
+            font-size: 12px;
+            color: #FFFFFF;
+            text-align: center;
+            background-color: #262C32;
+            margin-right: 1px;
+            margin-left: 32px;
+        }
+        .fabu1 {
+            font-size: 14px;
+            color: #7A7F85;
+            text-align: center;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .time {
+            font-size: 12px;
+            color: #7A7F85;
+            line-height: 18px;
+        }
+
+        .people {
+            font-size: 12px;
+            color: #7A7F85;
+            line-height: 18px;
+        }
+        .people1 {
+            font-size: 12px;
+            color: #7A7F85;
+            line-height: 18px;
+            margin-left: 30px;
+        }
+
+        .el-button {
+            margin: 30px 0 0 20px;
+        }
+    }
+
+    .content6 {
+        width: 480px;
+        height: 200px;
+        background-color: #ffffff;
+        float: left;
+        margin: 20px 0 0 20px;
+        border-left: 5px solid;
+        border-color: rgb(95, 177, 117);
+        border-radius: 4px;
+        p {
+            font-size: 20px;
+            color: #2B96E5;
+            font-style: normal;
+            margin: 10px 0 0 30px;
+        }
+
+        .fabu {
+            font-size: 14px;
+            color: #7A7F85;
+            text-align: center;
+            margin-right: 1px;
+            margin-left: 32px;
+        }
+        .fabu1 {
+            font-size: 14px;
+            color: #7A7F85;
+            text-align: center;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .time {
+            font-size: 12px;
+            color: #7A7F85;
+            line-height: 18px;
+        }
+
+        .people {
+            font-size: 12px;
+            color: #7A7F85;
+            line-height: 18px;
+        }
+        .people1 {
+            font-size: 12px;
+            color: #7A7F85;
+            line-height: 18px;
+            margin-left: 30px;
+        }
+
+        .el-button {
+            margin: 30px 0 0 20px;
+        }
     }
 
     .el-select {
@@ -111,6 +378,7 @@ export default {
         width: 570px;
         height: 50px;
         margin-bottom: 300px;
+        margin-top: 100px;
         background-color: #fff;
         float: right;
 

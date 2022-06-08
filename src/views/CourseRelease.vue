@@ -62,6 +62,43 @@
             </li>
             <el-button type="primary" plain class="banji">发布到班级</el-button>
         </div>
+        <div class="content4">
+            <img src="../assets/222.png" alt="课程图片" />
+            <p>数据可视化</p>
+            <p class="jianjie">数据可视化，是关于数据视觉表现形式的科学技术研究。其中，这种数据的视觉表现形式被定义为，一种以某种概要形式抽提出来的信息，包括相应信息单位的各种属性和变量。</p>
+            <li><span class="fabu">草稿</span>
+                <span class="time">创建时间：2019-04-30 17:23:25</span>
+            </li>
+            <li>
+                <span class="kecheng">课程</span>
+                <span class="moban">自定义课程</span>
+                <span class="zhangjie">章节：23
+
+                    测评：13
+
+                </span>
+            </li>
+            <el-button type="primary" plain class="banji">发布到班级</el-button>
+        </div>
+        <div class="content5">
+            <img src="../assets/333.png" alt="课程图片" />
+            <p>Sqoop</p>
+            <p class="jianjie">Sqoop是一款开源的工具，主要用于在Hadoop(Hive)与传统的数据库(mysql、postgresql...)间进行数据的传递，可以将一个关系型数据库（例如 ：
+                MySQL ,Oracle ,Postgres等）中的数据导进到Hadoop的HDFS中，也可以将HDFS的数据导进到关系型数据库中。</p>
+            <li><span class="fabu">草稿</span>
+                <span class="time">创建时间：2019-04-19 16:14:44</span>
+            </li>
+            <li>
+                <span class="kecheng">实验</span>
+                <span class="moban">自定义课程</span>
+                <span class="zhangjie">章节：10
+
+                    测评：3
+
+                    </span>
+            </li>
+            <el-button type="primary" plain class="banji">发布到班级</el-button>
+        </div>
         <div class="content3">
             <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
                 :current-page="currentPage4" :page-sizes="[100, 200, 300, 400]" :page-size="100"
@@ -235,6 +272,134 @@ export default {
             color: #FFFFFF;
             text-align: center;
             background-color: #262C32;
+            margin: 0 30px 0 20px;
+        }
+
+        .zhangjie {
+            font-size: 12px;
+            color: #7A7F85;
+            line-height: 18px;
+            // float: left;
+        }
+
+    }
+
+    .content4 {
+        margin-top: 20px;
+        width: 980px;
+        height: 240px;
+        background-color: #fff;
+
+        img {
+            margin: 20px 15px 0 20px;
+            float: left;
+        }
+
+        p {
+            font-size: 20px;
+            color: #2B96E5;
+            font-style: normal;
+        }
+
+        .jianjie {
+            font-size: 12px;
+            color: #999999;
+            line-height: 18px;
+            margin-bottom: 20px;
+        }
+
+        .fabu {
+            font-size: 12px;
+            color: #FFFFFF;
+            text-align: center;
+            background-color: #262C32;
+            margin-right: 10px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .time {
+            font-size: 12px;
+            color: #7A7F85;
+            line-height: 18px;
+        }
+
+        .kecheng {
+            font-size: 12px;
+            color: #7A7F85;
+            line-height: 18px;
+        }
+
+        .moban {
+            font-size: 12px;
+            color: #7A7F85;
+            text-align: center;
+            margin: 0 30px 0 20px;
+        }
+
+        .zhangjie {
+            font-size: 12px;
+            color: #7A7F85;
+            line-height: 18px;
+            // float: left;
+        }
+
+    }
+
+    .content5 {
+        margin-top: 20px;
+        width: 980px;
+        height: 240px;
+        background-color: #fff;
+
+        img {
+            margin: 20px 15px 0 20px;
+            float: left;
+        }
+
+        p {
+            font-size: 20px;
+            color: #2B96E5;
+            font-style: normal;
+        }
+
+        .jianjie {
+            font-size: 12px;
+            color: #999999;
+            line-height: 18px;
+            margin-bottom: 20px;
+        }
+
+        .fabu {
+            font-size: 12px;
+            color: #FFFFFF;
+            text-align: center;
+            background-color: #262C32;
+            margin-right: 10px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .time {
+            font-size: 12px;
+            color: #7A7F85;
+            line-height: 18px;
+        }
+
+        .kecheng {
+            font-size: 12px;
+            color: #7A7F85;
+            line-height: 18px;
+        }
+
+        .moban {
+            font-size: 12px;
+            color: #7A7F85;
+            text-align: center;
             margin: 0 30px 0 20px;
         }
 
