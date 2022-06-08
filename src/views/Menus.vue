@@ -29,7 +29,7 @@ export default {
 <style lang="less" scoped>
 .stumanage{
     background-color: #f3f5f7;
-    height: 100vh;
+    min-height: calc(100vh - 90px);
     // height: 910px;
     // display: flex;
     .main{

@@ -13,6 +13,7 @@ import AdminIndex from "../views/AdminIndex";
 import StudentIndex from "../views/StudentIndex";
 // 引入教务管理页面
 import Menus from "../views/Menus";
+
 // 引入学生管理页面
 import StuManage from "../views/StuManage";
 // 引入新增学生页面
@@ -21,8 +22,16 @@ import StuAdd from "../views/StuAdd";
 import StuCheck from "../views/StuCheck";
 // 引入编辑学生信息页面
 import StuEdit from "../views/StuEdit";
+
 // 引入教师管理页面
 import TeachManage from "../views/TeachManage";
+// 引入查看教师信息页面
+import TeachCheck from "../views/TeachCheck";
+// 引入编辑教师信息页面
+import TeachEdit from "../views/TeachEdit";
+// 引新增班级页面
+import TeachAdd from "../views/TeachAdd";
+
 // 引入班级管理页面
 import ClassManage from "../views/ClassManage";
 // 引入新增班级页面
@@ -96,10 +105,26 @@ export default new VueRouter({
           name: "StuEdit",
           component: StuEdit,
         },
+        
         {
           path: "teachmanage",
           name: "TeachManage",
           component: TeachManage,
+        },
+        {
+          path: "teachadd",
+          name: "TeachAdd",
+          component: TeachAdd,
+        },
+        {
+          path: "teachcheck",
+          name: "TeachCheck",
+          component: TeachCheck,
+        },
+        {
+          path: "teachedit",
+          name: "TeachEdit",
+          component: TeachEdit,
         },
         {
           path: "classmanage",

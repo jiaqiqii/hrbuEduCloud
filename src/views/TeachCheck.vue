@@ -1,23 +1,23 @@
 <template>
-  <div class="stucheck">
+  <div class="teachcheck">
     <div class="title">
-      <router-link to="/menus/stumanage" tag="span" class="stumanage"
-        >学生管理</router-link
+      <router-link to="/menus/teachmanage" tag="span" class="teachmanage"
+        >教师管理</router-link
       >
       <span>></span>
-      <span>学生信息</span>
+      <span>教师信息</span>
       <el-row>
         <el-button @click="resetPassword" size="medium">重置密码</el-button>
         <el-button @click="disable(0)" size="medium"
-        :disabled="!stuData.state === '有效' ? 1 : 0">结课</el-button>
+        :disabled="!TeachData.state === '有效' ? 1 : 0">结课</el-button>
         <el-button @click="disable(1)" size="medium"
-        :disabled="stuData.state === '有效' ? 1 : 0">激活</el-button>
+        :disabled="TeachData.state === '有效' ? 1 : 0">激活</el-button>
       </el-row>
     </div>
     <div class="content">
       <el-avatar :size="100" :src="circleUrl"></el-avatar>
-      <p>{{ stuData.stuname }}</p>
-      <div class="stulist">
+      <p>{{TeachData.teachname}}</p>
+      <div class="teachlist">
         <span class="shu"></span>
         <el-descriptions
           class="margin-top"
@@ -30,37 +30,19 @@
               >编辑</el-button
             >
           </template>
-          <el-descriptions-item label="所属院校">{{
-            stuData.school
-          }}</el-descriptions-item>
-          <el-descriptions-item label="所属专业">{{
-            stuData.major
-          }}</el-descriptions-item>
-          <el-descriptions-item label="所属班级">{{
-            stuData.stuclass
-          }}</el-descriptions-item>
-          <el-descriptions-item label="学籍号">{{
-            stuData.code
-          }}</el-descriptions-item>
-          <el-descriptions-item label="性别">{{
-            stuData.gender
-          }}</el-descriptions-item>
-          <el-descriptions-item label="邮箱">{{
-            stuData.email
-          }}</el-descriptions-item>
-          <el-descriptions-item label="身份证">{{
-            stuData.indent
-          }}</el-descriptions-item>
-          <el-descriptions-item label="个人介绍">{{
-            stuData.introduction
-          }}</el-descriptions-item>
-          <el-descriptions-item label="费用列表"
-            >哈尔滨学院专业共建</el-descriptions-item
+          <el-descriptions-item label="用户名">{{TeachData.username}}</el-descriptions-item>
+          <el-descriptions-item label="真实姓名">{{TeachData.teachname}}</el-descriptions-item>
+          <el-descriptions-item label="邮箱">{{TeachData.email}}</el-descriptions-item>
+          <el-descriptions-item label="所属院校">{{TeachData.school}}</el-descriptions-item>
+          <el-descriptions-item label="所属专业">{{TeachData.major}}</el-descriptions-item>
+          <el-descriptions-item label="教授班级">{{TeachData.classname}}</el-descriptions-item>
+          <el-descriptions-item label="性别">{{TeachData.gender}}</el-descriptions-item>
+          <el-descriptions-item label="个人介绍">{{TeachData.introduction}}</el-descriptions-item>
           >
         </el-descriptions>
       </div>
     </div>
-    <div class="stufooter">
+    <div class="teachfooter">
       <span class="shu"></span>
       <el-descriptions
         class="margin-top"
@@ -68,12 +50,8 @@
         :column="1"
         :size="size"
       >
-        <el-descriptions-item label="状态">{{
-          stuData.state
-        }}</el-descriptions-item>
-        <el-descriptions-item label="创建时间">{{
-          stuData.ts
-        }}</el-descriptions-item>
+        <el-descriptions-item label="用户状态">{{TeachData.state}}</el-descriptions-item>
+        <el-descriptions-item label="创建时间">{{TeachData.ts}}</el-descriptions-item>
       </el-descriptions>
     </div>
   </div>
@@ -82,25 +60,22 @@
 <script>
 import axios from "axios";
 export default {
-  name: "StuCheck",
+  name: "TeachCheck",
   data() {
     return {
       circleUrl:
         "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png",
       size: "",
-      stuData: {},
+      TeachData: {},
     };
   },
   mounted() {
-    // 默认获取选择学生信息
-    // this.$bus.$on("hello", (data) => {
-    //   this.getstuinfo(data);
-    // });
-    this.getStuInfo();
+    // 默认获取选择教师信息
+    this.getTeachInfo();
   },
   methods: {
 
-    getStuInfo(){
+    getTeachInfo(){
       console.log(this.$route.query);
     const obj = {
       params: {
@@ -108,13 +83,13 @@ export default {
       },
     };
     axios
-      .get("/api/stu/stucheck", obj)
+      .get("/api/teacher/teachcheck", obj)
       .then((response) => {
         console.log(response.data.data);
-        this.stuData = response.data.data.results[0];
+        this.TeachData = response.data.data.results[0];
 
-        console.log(this.stuData);
-        console.log(this.stuData.school);
+        console.log(this.TeachData);
+        console.log(this.TeachData.username);
       })
       .catch((error) => {
         console.log(error);
@@ -122,10 +97,10 @@ export default {
     },
     // 重置密码
     resetPassword() {
-      console.log(this.stuData.id);
+      console.log(this.TeachData.id);
       axios
-        .post("/api/stu/resetpassword", {
-          stuIds:[this.stuData.id]
+        .post("/api/teacher/resetpassword", {
+          teachIds:[this.TeachData.id]
         })
         .then((response) => {
           if(response.data.state){
@@ -151,10 +126,10 @@ export default {
 
     // 结课激活
     disable(state){
-      console.log(this.stuData.id)
+      console.log(this.TeachData.id)
       axios
-        .post("/api/stu/statestu", {
-          stuIds: [this.stuData.id],
+        .post("/api/teacher/stateteach", {
+          teachIds: [this.TeachData.id],
           state
         })
         .then((response) => {
@@ -180,8 +155,8 @@ export default {
     // 跳转到编辑学生信息页面
     edit() {
       this.$router.push({
-        name: "StuEdit",
-        query: {stuData:this.stuData},
+        name: "TeachEdit",
+        query: {teachData:this.TeachData},
       });
     },
   },
@@ -189,7 +164,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.stucheck {
+.teachcheck {
   width: 100%;
   margin-left: 20px;
 
@@ -200,7 +175,7 @@ export default {
       color: #7a7f85;
       line-height: 55px;
     }
-    .stumanage {
+    .teachmanage {
       color: #2b96e5;
     }
     .el-row {
@@ -245,13 +220,12 @@ export default {
       color: #262c32;
     }
   }
-  .stufooter {
+  .teachfooter {
     margin-top: 30px;
     width: 960px;
     background-color: #fff;
     padding: 20px;
     border-radius: 6px;
-    margin-bottom: 76px;
   }
 }
 </style>

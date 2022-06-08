@@ -240,7 +240,7 @@ export default {
         // 如果用户结课则不向后台发送对应用户数据
         if (item.state === "有效" && !state) {
           stuIdArr.push(item.id);
-        } else if (item.state === "结课" && state) {
+        } else if (item.state === "无效" && state) {
           stuIdArr.push(item.id);
         }
       });
@@ -299,7 +299,7 @@ export default {
 .stumanage {
   margin-left: 20px;
   width: 100%;
-  height: (100vh-50px);
+  // height: (100vh-50px);
   p {
     color: #7a7f85;
     line-height: 56px;
@@ -349,8 +349,9 @@ export default {
           border-right: 1px solid #ebeef5;
         }
       }
-      .cell {
-        padding: 0px;
+      /deep/ .cell {
+        text-align: center;
+        color: #262c32;
       }
     }
   }
@@ -358,7 +359,7 @@ export default {
     width: 570px;
     height: 50px;
     margin-top: 20px;
-    margin-bottom: 240px;
+    margin-bottom: 20px;
     background-color: #fff;
     float: right;
     .el-pagination {

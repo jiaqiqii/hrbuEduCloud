@@ -434,6 +434,7 @@ export default {
   }
   .commit {
     margin-top: 45px;
+    margin-bottom: 50px;
     text-align: center;
     // background-color: #f3f5f7;
     .el-button {

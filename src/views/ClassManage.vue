@@ -2,9 +2,21 @@
   <div class="classmanage">
     <p>班级管理</p>
     <el-row>
-      <el-button type="primary" @click="addclass" size="medium">新增班级*</el-button>
-      <el-button @click="disable(0)" size="medium" :disabled="!multipleSelection.length">结课</el-button>
-      <el-button size="medium" @click="disable(1)" :disabled="!multipleSelection.length">激活</el-button>
+      <el-button type="primary" @click="addclass" size="medium"
+        >新增班级*</el-button
+      >
+      <el-button
+        @click="disable(0)"
+        size="medium"
+        :disabled="!multipleSelection.length"
+        >结课</el-button
+      >
+      <el-button
+        size="medium"
+        @click="disable(1)"
+        :disabled="!multipleSelection.length"
+        >激活</el-button
+      >
     </el-row>
     <div class="content">
       <el-row>
@@ -82,9 +94,11 @@
         :page-sizes="[10, 20, 50]"
         :page-size="pageSize"
         layout="total, sizes, prev, pager, next, jumper"
-        :total="total">
+        :total="total"
+      >
       </el-pagination>
     </div>
+    <!-- <button @click="stuNum">学生人数</button> -->
   </div>
 </template>
 
@@ -128,90 +142,147 @@ export default {
       tableData: [],
       multipleSelection: [],
       total: 0,
-      pageSize:10,
-      pageNum:1
+      stunum: 0,
+      pageSize: 10,
+      pageNum: 1,
     };
   },
-  mounted(){
-      this.getClassInfo()
+  mounted() {
+    this.getClassInfo();
   },
   methods: {
     // 获取班级信息
-    getClassInfo(data){
+    // getClassInfo(data){
+    //   const obj = {
+    //     params: {
+    //       pageNum: this.pageNum,
+    //       pageSize: this.pageSize,
+    //     },
+    //   }
+    //   // 接口复用 判断是否有搜索条件
+    //   if(data){
+    //     obj.params = {...obj.params,...data};
+    //   }
+    //   console.log("obj",obj)
+    //   axios
+    //     .get("/api/class/classinfo",obj)
+    //     .then((response) => {
+    //       console.log(response);
+    //       this.tableData = response.data.data.results;
+    //       this.total = response.data.data.total;
+    //       console.log(this.tableData[0].classname)
+
+    //     })
+    //     .catch((error) => {
+    //       console.log(error);
+    //     })
+
+    // },
+    getClassInfo(data) {
       const obj = {
         params: {
           pageNum: this.pageNum,
           pageSize: this.pageSize,
         },
-      }
+      };
       // 接口复用 判断是否有搜索条件
-      if(data){
-        obj.params = {...obj.params,...data};
+      if (data) {
+        obj.params = { ...obj.params, ...data };
       }
+      console.log("obj", obj);
       axios
-        .get("/api/class/classinfo",obj)
+        .get("/api/class/classinfo", obj)
         .then((response) => {
           console.log(response);
           this.tableData = response.data.data.results;
           this.total = response.data.data.total;
+
+         
         })
         .catch((error) => {
           console.log(error);
-        })
+        });
     },
 
+
+
+     // // 获取班级学生人数
+          // const obj2 = {
+          //   params: {
+          //     school: this.tableData[0].school,
+          //     classname: this.tableData[0].classname,
+          //   },
+          // };
+          // axios.get("/api/class/stunum", obj2).then((response) => {
+          //   console.log(response);
+          //   console.log(response.data.data.results[0].stunum);
+          //   this.stunum = response.data.data.results[0].stunum;
+          //   console.log("stunum", this.stunum);
+
+
+          //   // tableData数组里的对象里的都添加一个stunum属性
+          //   let newArr = [];
+          //   this.tableData.map((item) => {
+          //     newArr.push(
+          //       Object.assign(item, {stunum: this.stunum })
+          //       );
+          //   });
+          //   this.tableData = newArr;
+
+          //   console.log(this.tableData);
+          //   // console.log(this.tableData.stunum);
+          // });
     handleSelectionChange(val) {
       this.multipleSelection = val;
     },
     handleSizeChange(val) {
-      this.pageSize = val
+      this.pageSize = val;
       // console.log(`每页 ${val} 条`);
-      this.search()
+      this.search();
     },
     handleCurrentChange(val) {
-      this.pageNum = val
-      this.search()
+      this.pageNum = val;
+      this.search();
     },
-    
+
     //结课激活
-    disable(state){
+    disable(state) {
       console.log(state);
       const classIdArr = [];
       this.multipleSelection.forEach((item) => {
-       // 如果班级结课则不向后台发送对应班级数据
+        // 如果班级结课则不向后台发送对应班级数据
         if (item.state === "有效" && !state) {
           classIdArr.push(item.id);
         } else if (item.state === "无效" && state) {
           classIdArr.push(item.id);
         }
-      })
+      });
 
       axios
-      .post("/api/class/stateclass",{
-        classIds:classIdArr,
-        state
-      })
-      .then((response) =>{
-        const msg = {
+        .post("/api/class/stateclass", {
+          classIds: classIdArr,
+          state,
+        })
+        .then((response) => {
+          const msg = {
             type: "success",
           };
           if (state) {
             msg.message = "激活用户成功";
-          } else{
+          } else {
             msg.message = "禁用用户成功";
           }
           this.$message(msg);
           // this.search();
           console.log(response);
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
- 
-    //模糊搜索 
-    search(){
 
+    //模糊搜索
+    search() {
       const data = {};
       if (this.classState == 1 || this.classState == 0) {
         data.classState = this.classState;
@@ -222,24 +293,24 @@ export default {
       if (this.input) {
         data.input = this.input;
       }
-      console.log("data",data)
+      console.log("data", data);
       this.getClassInfo(data);
     },
-// 跳转到新增班级页面
-    addclass(){
+    // 跳转到新增班级页面
+    addclass() {
       this.$router.push({
-        name:"ClassAdd",
+        name: "ClassAdd",
       });
     },
 
-// 跳转到到查看班级信息页面
-    classCheck(val){
+    // 跳转到到查看班级信息页面
+    classCheck(val) {
       this.multipleSelection = val;
       this.$router.push({
-        name:"ClassCheck",
-        query:{...this.multipleSelection},
+        name: "ClassCheck",
+        query: { ...this.multipleSelection },
       });
-    }
+    },
   },
 };
 </script>
@@ -292,8 +363,9 @@ export default {
           border-right: 1px solid #ebeef5;
         }
       }
-      .cell {
-        padding: 0px;
+      /deep/ .cell {
+        text-align: center;
+        color: #262c32;
       }
     }
   }
@@ -301,7 +373,7 @@ export default {
     width: 570px;
     height: 50px;
     margin-top: 20px;
-    margin-bottom: 240px;
+    margin-bottom: 178px;
     background-color: #fff;
     float: right;
     .el-pagination {

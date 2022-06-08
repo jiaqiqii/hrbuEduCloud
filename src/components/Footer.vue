@@ -21,8 +21,8 @@ export default {
     text-align: center;
     /* align-self: flex-end; */
     /* margin-top: 385px; */
-    position: absolute;
-    left: 0px;
-    bottom: 0px
+    // position: absolute;
+    // left: 0px;
+    // bottom: 0px
 }
 </style>

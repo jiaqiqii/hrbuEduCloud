@@ -76,7 +76,7 @@ export default {
       },
     };
     axios
-      .get("/api/class/stucheck", obj)
+      .get("/api/class/classcheck", obj)
       .then((response) => {
         console.log(response);
         this.classData = response.data.data.results[0];
@@ -114,11 +114,13 @@ export default {
         });
     },
 
-    // 跳转到编辑学生信息页面
+    // 跳转到编辑班级信息页面
     edit() {
       this.$router.push({
         name: "ClassEdit",
-        query: { ...this.multipleSelection },
+        query:{
+          classData:this.classData
+        }
       });
     },
   }
@@ -185,7 +187,8 @@ export default {
     background-color: #fff;
     padding: 20px;
     border-radius: 6px;
-    margin-bottom: 30px;
+    margin-bottom: 238px;
+
   }
 }
 </style>
