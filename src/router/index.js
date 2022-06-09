@@ -50,6 +50,7 @@ import CourseWare from "../views/CourseWare";
 import caidan1 from "../views/caidan1";
 import cepingguanli from "../views/cepingguanli";
 import shijuanguanli from "../views/shijuanguanli";
+import chengjipigai from "../views/chengjipigai";
 import TextManagement from "../views/TextManagement";
 import TextManagement1 from "../views/TextManagement1";
 import TextManagement2 from "../views/TextManagement2";
@@ -57,6 +58,7 @@ import TextManagement3 from "../views/TextManagement3";
 import TextPaper from "../views/TextPaper";
 import TextPaper1 from "../views/TextPaper1";
 import TextPaper2 from "../views/TextPaper2";
+import CorrectingResults from "../views/CorrectingResults";
 import CourseRelease from "../views/CourseRelease";
 export default new VueRouter({
   routes: [
@@ -223,6 +225,28 @@ export default new VueRouter({
           name: "TextPaper2",
           component: TextPaper2,
         },
+      ],
+    },
+    {
+      path: "/chengjipigai",
+      name: "chengjipigai",
+      component: chengjipigai,
+      children: [
+        {
+          path: "correctingresults",
+          name: "CorrectingResults",
+          component: CorrectingResults,
+        },
+        // {
+        //   path: "textpaper1",
+        //   name: "TextPaper1",
+        //   component: TextPaper1,
+        // },
+        // {
+        //   path: "textpaper2",
+        //   name: "TextPaper2",
+        //   component: TextPaper2,
+        // },
       ],
     },
     {
