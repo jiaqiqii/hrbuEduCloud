@@ -262,4 +262,23 @@ export default new VueRouter({
       ],
     },
   ],
+
+
+
+  
 });
+
+
+// 路由守卫
+
+// router.beforeEach((to, from, next) => {
+//   if(to.path === '/' || to.path=== '/forgetpassword'){
+//     next();
+//   }else {
+//     const token = localStorage.getItem('token')
+//     if (token){
+//       next()
+//     }
+//   }
+// })
+// export default router;

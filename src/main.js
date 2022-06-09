@@ -30,6 +30,7 @@ import {
   Tag,
   DescriptionsItem,
   Radio,
+  CheckboxGroup
   // DescriptionItem,
 } from 'element-ui';
 Vue.use(Input);
@@ -51,6 +52,7 @@ Vue.use(Descriptions);
 Vue.use(Tag);
 Vue.use(DescriptionsItem);
 Vue.use(Radio);
+Vue.use(CheckboxGroup);
 
 Vue.prototype.$message = Message;
 
