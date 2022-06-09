@@ -1,5 +1,5 @@
 <template>
-  <div class="stuedit">
+  <div class="teachedit">
     <div class="title">
       <router-link to="/menus/teachmanage" tag="span" class="teachmanage"
         >教师管理</router-link
@@ -179,9 +179,10 @@ export default {
       },
       rules: {
         school: [{ required: true, message: "请选择院校", trigger: "change" }],
-        major: [{ major: 'array', required: true, message: "请至少选择一个专业", trigger: "change" }],
+        
+        major: [{ required: true, message: "请至少选择一个专业", trigger: "change" }],
         classname: [
-          { classname: 'array', required: true, message: "请至少选择一个班级", trigger: "change" },
+          {  required: true, message: "请至少选择一个班级", trigger: "change" },
         ],
         username: [{ required: true, message: "请填写用户名", trigger: "blur" }],
         teachname: [{ required: true, message: "请填写姓名", trigger: "blur" }],
@@ -205,8 +206,8 @@ export default {
     this.ruleForm.gender = this.$route.query.teachData.gender;
     this.ruleForm.email = this.$route.query.teachData.email;
     this.ruleForm.school = this.$route.query.teachData.school;
-    this.ruleForm.major = this.$route.query.teachData.major;
-    this.ruleForm.classname = this.$route.query.teachData.classname;
+    this.ruleForm.major =[this.$route.query.teachData.major];
+    this.ruleForm.classname = [this.$route.query.teachData.classname];
     this.ruleForm.introduction = this.$route.query.teachData.introduction;
   },
  
@@ -259,7 +260,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.stuedit {
+.teachedit {
   width: 100%;
   margin-left: 20px;
   .title {
