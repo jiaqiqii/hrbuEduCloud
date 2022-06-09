@@ -175,13 +175,16 @@ export default {
     resetPassword() {
       console.log(this.multipleSelection);
       const teachIdArr = [];
+      const emailList = [];
       this.multipleSelection.forEach((item) => {
         teachIdArr.push(item.id);
+        emailList.push(item.email);
       });
       console.log(teachIdArr);
       axios
         .post("/api/teacher/resetpassword", {
           teachIds: teachIdArr,
+          emailList,
         })
         .then((response) => {
           if(response.data.state){

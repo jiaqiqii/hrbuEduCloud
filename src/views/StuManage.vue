@@ -189,7 +189,14 @@ export default {
         });
     },
     handleSelectionChange(val) {
+      // 获取选中的用户邮箱 []
+      // this.emailList = [];
+      // val.forEach((item) => {
+      //   this.emailList.push(item.email);
+      // })
+      // console.log(this.emailList);
       this.multipleSelection = val;
+      
     },
     handleSizeChange(val) {
       this.pageSize = val;
@@ -204,13 +211,18 @@ export default {
     resetPassword() {
       console.log(this.multipleSelection);
       const stuIdArr = [];
+      const emailList = [];
       this.multipleSelection.forEach((item) => {
         stuIdArr.push(item.id);
+        emailList.push(item.email);
       });
       console.log(stuIdArr);
+      console.log(emailList);
+
       axios
         .post("/api/stu/resetpassword", {
           stuIds: stuIdArr,
+          emailList,
         })
         .then((response) => {
           if(response.data.state){

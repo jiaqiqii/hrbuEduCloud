@@ -125,7 +125,8 @@ export default {
       console.log(this.stuData.id);
       axios
         .post("/api/stu/resetpassword", {
-          stuIds:[this.stuData.id]
+          stuIds:[this.stuData.id],
+          emailList:[this.stuData.email]
         })
         .then((response) => {
           if(response.data.state){

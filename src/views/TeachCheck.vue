@@ -100,7 +100,8 @@ export default {
       console.log(this.TeachData.id);
       axios
         .post("/api/teacher/resetpassword", {
-          teachIds:[this.TeachData.id]
+          teachIds:[this.TeachData.id],
+          emailList:[this.TeachData.email]
         })
         .then((response) => {
           if(response.data.state){
