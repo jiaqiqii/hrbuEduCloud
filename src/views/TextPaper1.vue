@@ -6,8 +6,8 @@
             <span class="xinjian">新建试卷</span>
         </el-row>
         <el-form>
-        <div class="content1">
-            <!-- <el-row> -->
+            <div class="content1">
+                <!-- <el-row> -->
                 <i class="el-icon-warning"></i>
                 <span class="mingcheng">试卷名称、试卷分类、试卷类型、试卷简介为必填项，正确填写后点击右侧“保存&下一步”进行组卷；</span>
                 <!-- <el-button type="primary" size="medium" @click="submitForm('ruleForm', ruleForm)">
@@ -15,14 +15,15 @@
                     <router-link to="/shijuanguanli/TextPaper2" tag="li" @click="submitForm('ruleForm', ruleForm)">
                         保存&下一步</router-link> 
                 </el-button> -->
-                
-                    <el-form-item class="submit">
-                        <el-button type="primary" size="mini" @click="submitForm('ruleForm', ruleForm)">保存</el-button>
 
-                    </el-form-item>
-                
-            <!-- </el-row> -->
-        </div></el-form>
+                <el-form-item class="submit">
+                    <el-button type="primary" size="mini" @click="submitForm('ruleForm', ruleForm)">保存</el-button>
+
+                </el-form-item>
+
+                <!-- </el-row> -->
+            </div>
+        </el-form>
         <div class="content2">
             <el-row>
                 <div class="one">
@@ -33,23 +34,23 @@
                 </div>
             </el-row>
             <div class="centent22">
-                <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm"
+                <!-- <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm"
                     hide-required-asterisk>
                     <el-form-item label="试卷名称" prop="name">
                         <el-input v-model="ruleForm.name"></el-input>
                     </el-form-item>
 
-                    <el-form-item label="试卷分类" prop="fenlei">
-                        <el-select v-model="ruleForm.fenlei" placeholder="请选择">
+                    <el-form-item label="试卷分类" prop="shijuan">
+                        <el-select v-model="fenlei" placeholder="请选择">
                             <el-option label="IT互联网" value="IT互联网"></el-option>
                             <el-option label="物联网" value="物联网"></el-option>
                         </el-select>
-                        <el-select v-model="ruleForm.fenlei2" placeholder="请选择">
+                        <el-select v-model="fangxiang" placeholder="请选择">
                             <el-option label="大数据" value="大数据"></el-option>
                             <el-option label="后端开发" value="后端开发"></el-option>
                             <el-option label="前端开发" value="前端开发"></el-option>
                         </el-select>
-                        <el-select v-model="ruleForm.fenlei3" placeholder="请选择">
+                        <el-select v-model="jineng" placeholder="请选择">
                             <el-option label="HTML/CSS" value="HTML/CSS"></el-option>
                             <el-option label="JavaScript" value="JavaScript"></el-option>
                         </el-select>
@@ -66,23 +67,23 @@
                     <el-form-item label="试卷简介" prop="jianjie">
                         <el-input v-model="ruleForm.jianjie"></el-input>
                     </el-form-item>
-                </el-form>
+                </el-form> -->
             </div>
-            <!-- <el-row class="row1">
+            <el-row class="row1">
                 <span>试卷名称</span>
-                <el-input v-model="input" placeholder="请输入名称，最多支持30个汉字"></el-input>
+                <el-input v-model="name" placeholder="请输入名称，最多支持30个汉字"></el-input>
             </el-row>
             <el-row class="row1">
                 <span>试卷分类</span>
-                <el-select v-model="value1" size="medium" placeholder="请选择">
+                <el-select v-model="fenlei" size="medium" placeholder="请选择">
                     <el-option v-for="item in options1" :key="item.value" :label="item.label" :value="item.value">
                     </el-option>
                 </el-select>
-                <el-select v-model="value2" size="medium" placeholder="请选择">
+                <el-select v-model="fangxiang" size="medium" placeholder="请选择">
                     <el-option v-for="item in options2" :key="item.value" :label="item.label" :value="item.value">
                     </el-option>
                 </el-select>
-                <el-select v-model="value3" size="medium" placeholder="请选择">
+                <el-select v-model="jineng" size="medium" placeholder="请选择">
                     <el-option v-for="item in options3" :key="item.value" :label="item.label" :value="item.value">
                     </el-option>
                 </el-select>
@@ -91,16 +92,16 @@
 
             <el-row class="row1">
                 <span>试卷形式</span>
-                <el-select v-model="value4" size="medium" placeholder="请选择分类">
+                <el-select v-model="xingshi" size="medium" placeholder="请选择分类">
                     <el-option v-for="item in options4" :key="item.value" :label="item.label" :value="item.value">
                     </el-option>
                 </el-select>
             </el-row>
             <el-row class="row1">
                 <span>试卷简介</span>
-                <el-input type="textarea" :rows="8" placeholder="填写测评的特征信息，最多支持100个汉字" v-model="textarea" class="shuru">
+                <el-input type="textarea" :rows="8" placeholder="填写测评的特征信息，最多支持100个汉字" v-model="jianjie" class="shuru">
                 </el-input>
-            </el-row>-->
+            </el-row>
         </div>
 
     </div>
@@ -110,86 +111,71 @@ import axios from "axios";
 export default {
     data() {
         return {
-            // options1: [{
-            //     value1: '选项1',
-            //     label: '请选择'
-            // }, {
-            //     value1: '选项2',
-            //     label: 'IT互联网'
-            // }, {
-            //     value1: '选项3',
-            //     label: '物联网'
-            // },],
-            // value1: '',
-            // options2: [{
-            //     value2: '选项1',
-            //     label: '请选择'
-            // }, {
-            //     value2: '选项2',
-            //     label: '大数据'
-            // }, {
-            //     value2: '选项3',
-            //     label: '后端开发'
-            // }, {
-            //     value2: '选项4',
-            //     label: '前端开发'
-            // },],
-            // value2: '',
-            // options3: [{
-            //     value: '选项1',
-            //     label: '请选择'
-            // }, {
-            //     value: '选项2',
-            //     label: 'HTML/CSS'
-            // }, {
-            //     value: '选项3',
-            //     label: 'JavaScript'
-            // },],
-            // value3: '',
-            // options4: [{
-            //     value: '选项1',
-            //     label: '请选择'
-            // }, {
-            //     value: '选项2',
-            //     label: '练习'
-            // }, {
-            //     value: '选项3',
-            //     label: '考试'
-            // }, {
-            //     value: '选项4',
-            //     label: '认证'
-            // }, {
-            //     value: '选项5',
-            //     label: '比赛'
-            // },],
-            // value4: '',
-            input: '',
-            textarea: '',
-            ruleForm: {
-                name: "",
-                fenlei: "",
-                xingshi: "",
-                jianjie: "",
-
-            },
+            options1: [ {
+                value: 'IT互联网',
+                label: 'IT互联网'
+            }, {
+                value: '物联网',
+                label: '物联网'
+            },],
+            fenlei: '',
+            options2: [ {
+                value: '大数据',
+                label: '大数据'
+            }, {
+                value: '后端开发',
+                label: '后端开发'
+            }, {
+                value: '前端开发',
+                label: '前端开发'
+            },],
+            fangxiang: '',
+            options3: [ {
+                value: '选项2',
+                label: 'HTML/CSS'
+            }, {
+                value: '选项3',
+                label: 'JavaScript'
+            },],
+            jineng: '',
+            options4: [ {
+                value: '选项2',
+                label: '练习'
+            }, {
+                value: '选项3',
+                label: '考试'
+            }, {
+                value: '选项4',
+                label: '认证'
+            }, {
+                value: '选项5',
+                label: '比赛'
+            },],
+            xingshi: '',
+            jianjie:'',
+            input:'',
+            name:'',
         }
     },
     methods: {
         // 校验填写信息并新增教师
-        submitForm(formName, ruleForm) {
+        submitForm() {
             // console.log(formName),
-            console.log(ruleForm.name),
-                console.log(ruleForm.fenlei),
-                console.log(ruleForm.xingshi),
-                console.log(ruleForm.jianjie),
-                this.$refs[formName].validate((valid) => {
-                    if (valid) {
+            console.log(this.name),
+                console.log(this.fenlei),
+                console.log(this.xingshi),
+                console.log(this.jianjie),
+                console.log(this.fangxiang),
+                console.log(this.jineng),
+                    
                         axios
-                            .post("/api/teacher/addteach", {
-                                name: ruleForm.name,
-                                fenlei: ruleForm.fenlei,
-                                xingshi: ruleForm.xingshi,
-                                jianjie: ruleForm.jianjie,
+                            .post("/api/shijuan/addteach", {
+                                name: this.name,
+                                fenlei: this.fenlei,
+                                xingshi: this.xingshi,
+                                jianjie: this.jianjie,
+                                fangxiang: this.fangxiang,
+                                jineng: this.jineng,
 
                             })
                             .then((response) => {
@@ -203,11 +189,8 @@ export default {
                             .catch((error) => {
                                 console.log(error);
                             });
-                    } else {
-                        this.$message.error("信息填写不符合要求，新增教师失败");
-                        return false;
-                    }
-                });
+                   
+                
         },
         resetForm(formName) {
             this.$refs[formName].resetFields();
