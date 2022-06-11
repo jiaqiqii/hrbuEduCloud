@@ -7,21 +7,14 @@
         </el-row>
         <el-form>
             <div class="content1">
-                <!-- <el-row> -->
                 <i class="el-icon-warning"></i>
-                <span class="mingcheng">试卷名称、试卷分类、试卷类型、试卷简介为必填项，正确填写后点击右侧“保存&下一步”进行组卷；</span>
-                <!-- <el-button type="primary" size="medium" @click="submitForm('ruleForm', ruleForm)">
-                    保存&下一步
-                    <router-link to="/shijuanguanli/TextPaper2" tag="li" @click="submitForm('ruleForm', ruleForm)">
-                        保存&下一步</router-link> 
-                </el-button> -->
-
-                <el-form-item class="submit">
-                    <el-button type="primary" size="mini" @click="submitForm('ruleForm', ruleForm)">保存</el-button>
-
-                </el-form-item>
-
-                <!-- </el-row> -->
+                <span class="mingcheng">试卷名称、试卷分类、试卷类型、试卷简介为必填项，正确填写后点击右侧“保存”“下一步”进行组卷；</span>
+                <el-button type="primary" size="mini" @click="submitForm('ruleForm', ruleForm)">
+                    保存</el-button>
+                <el-button type="primary" size="mini">
+                    <router-link to="/shijuanguanli/TextPaper2" tag="li">
+                        下一步</router-link>
+                </el-button>
             </div>
         </el-form>
         <div class="content2">
@@ -34,40 +27,7 @@
                 </div>
             </el-row>
             <div class="centent22">
-                <!-- <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm"
-                    hide-required-asterisk>
-                    <el-form-item label="试卷名称" prop="name">
-                        <el-input v-model="ruleForm.name"></el-input>
-                    </el-form-item>
 
-                    <el-form-item label="试卷分类" prop="shijuan">
-                        <el-select v-model="fenlei" placeholder="请选择">
-                            <el-option label="IT互联网" value="IT互联网"></el-option>
-                            <el-option label="物联网" value="物联网"></el-option>
-                        </el-select>
-                        <el-select v-model="fangxiang" placeholder="请选择">
-                            <el-option label="大数据" value="大数据"></el-option>
-                            <el-option label="后端开发" value="后端开发"></el-option>
-                            <el-option label="前端开发" value="前端开发"></el-option>
-                        </el-select>
-                        <el-select v-model="jineng" placeholder="请选择">
-                            <el-option label="HTML/CSS" value="HTML/CSS"></el-option>
-                            <el-option label="JavaScript" value="JavaScript"></el-option>
-                        </el-select>
-                    </el-form-item>
-                    <el-form-item label="试卷形式" prop="xingshi">
-                        <el-select v-model="ruleForm.xingshi" placeholder="请选择">
-                            <el-option label="练习" value="练习"></el-option>
-                            <el-option label="考试" value="考试"></el-option>
-                            <el-option label="认证" value="认证"></el-option>
-                            <el-option label="比赛" value="比赛"></el-option>
-                        </el-select>
-
-                    </el-form-item>
-                    <el-form-item label="试卷简介" prop="jianjie">
-                        <el-input v-model="ruleForm.jianjie"></el-input>
-                    </el-form-item>
-                </el-form> -->
             </div>
             <el-row class="row1">
                 <span>试卷名称</span>
@@ -111,7 +71,7 @@ import axios from "axios";
 export default {
     data() {
         return {
-            options1: [ {
+            options1: [{
                 value: 'IT互联网',
                 label: 'IT互联网'
             }, {
@@ -119,7 +79,7 @@ export default {
                 label: '物联网'
             },],
             fenlei: '',
-            options2: [ {
+            options2: [{
                 value: '大数据',
                 label: '大数据'
             }, {
@@ -130,67 +90,57 @@ export default {
                 label: '前端开发'
             },],
             fangxiang: '',
-            options3: [ {
-                value: '选项2',
+            options3: [{
+                value: 'HTML/CSS',
                 label: 'HTML/CSS'
             }, {
-                value: '选项3',
+                value: 'JavaScript',
                 label: 'JavaScript'
             },],
             jineng: '',
-            options4: [ {
-                value: '选项2',
+            options4: [{
+                value: '练习',
                 label: '练习'
             }, {
-                value: '选项3',
+                value: '考试',
                 label: '考试'
             }, {
-                value: '选项4',
+                value: '认证',
                 label: '认证'
             }, {
-                value: '选项5',
+                value: '比赛',
                 label: '比赛'
             },],
             xingshi: '',
-            jianjie:'',
-            input:'',
-            name:'',
+            jianjie: '',
+            input: '',
+            name: '',
         }
     },
     methods: {
-        // 校验填写信息并新增教师
         submitForm() {
-            // console.log(formName),
-            console.log(this.name),
-                console.log(this.fenlei),
-                console.log(this.xingshi),
-                console.log(this.jianjie),
-                console.log(this.fangxiang),
-                console.log(this.jineng),
-                    
-                        axios
-                            .post("/api/shijuan/addteach", {
-                                name: this.name,
-                                fenlei: this.fenlei,
-                                xingshi: this.xingshi,
-                                jianjie: this.jianjie,
-                                fangxiang: this.fangxiang,
-                                jineng: this.jineng,
+                axios
+                    .post("/api/shijuan/addteach", {
+                        name: this.name,
+                        fenlei: this.fenlei,
+                        xingshi: this.xingshi,
+                        jianjie: this.jianjie,
+                        fangxiang: this.fangxiang,
+                        jineng: this.jineng,
 
-                            })
-                            .then((response) => {
-                                // console.log(data)
-                                console.log(response);
-                                this.$message({
-                                    message: "新增教师成功",
-                                    type: "success",
-                                });
-                            })
-                            .catch((error) => {
-                                console.log(error);
-                            });
-                   
-                
+                    })
+                    .then((response) => {
+                        console.log(response);
+                        this.$message({
+                            message: "保存成功",
+                            type: "success",
+                        });
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+
+
         },
         resetForm(formName) {
             this.$refs[formName].resetFields();
@@ -235,9 +185,9 @@ export default {
 
         .el-button {
             font-size: 16px;
-            float: right;
-            margin-right: 20px;
-            width: 120px;
+            // float: right;
+            margin-right: 10px;
+            width: 100px;
             height: 35px;
             font-size: 14px;
             color: #f2f5f7;
@@ -245,29 +195,10 @@ export default {
         }
     }
 
-    .submit {
-        text-align: center;
-        margin: 35px 0 10px 0;
 
-        .el-button {
-            width: 50px;
-            margin-right: 40px;
-        }
-    }
-
-    .el-form {
-        // margin-left: 45px;
-        // float: left;
-        overflow: hidden;
-    }
-
-    // /deep/ .el-input__inner {
-    //     width: 200px;
-    //     margin-bottom: 10px;
-    // }
-
-    /deep/ .el-textarea__inner {
-        width: 300px;
+    .el-button {
+        width: 30px;
+        margin-right: 40px;
     }
 }
 
@@ -281,6 +212,7 @@ export default {
 
     .row1 {
         margin: 30px 0 0 50px;
+        // width: 200px;
     }
 
     span {
