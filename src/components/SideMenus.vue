@@ -2,14 +2,14 @@
   <div class="slidemenus">
       <h2>·系统管理</h2>
       <ul>
-          <li>用户管理</li>
-          <li>职位管理</li>
-          <li>角色管理</li>
-          <li>菜单管理</li>
+          <router-link to="/xitongmenus/usermanage" tag="li">用户管理</router-link>
+          <router-link to="/xitongmenus/positionmanage" tag="li">职位管理</router-link>
+          <router-link to="/xitongmenus/rolemanage" tag="li">角色管理</router-link>        
+          <router-link to="/xitongmenus/menusmanage" tag="li">菜单管理</router-link>      
           <router-link to="/xitongmenus/knowledgemenus" tag="li">数据字典</router-link>
-          <li>学校管理</li>
-          <li>专业管理</li>
-          <li>在线用户管理</li>
+          <router-link to="/xitongmenus/schoolmanage" tag="li">学校管理</router-link>
+          <router-link to="/xitongmenus/majormanage" tag="li">专业管理</router-link>
+          <router-link to="/xitongmenus/onlineuser" tag="li">在线用户管理</router-link>
       </ul>
   </div>
 </template>

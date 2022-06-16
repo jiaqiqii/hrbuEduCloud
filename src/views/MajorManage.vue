@@ -1,16 +1,15 @@
 <template>
-  <div class="usermanage">
-    <p>用户管理</p>
+  <div class="majormanage">
+    <p>专业管理</p>
     <el-row>
-      <el-button type="primary" size="medium" @click="adduser">新增用户*</el-button>
-      <el-button size="medium" @click="resetPassword" :disabled="!multipleSelection.length">重置密码</el-button>
+      <el-button type="primary" size="medium" @click="addmajor">新增专业</el-button>
       <el-button size="medium" @click="disable(0)" :disabled="!multipleSelection.length">禁用</el-button>
       <el-button size="medium" @click="disable(1)" :disabled="!multipleSelection.length">激活</el-button>
     </el-row>
     <div class="content">
       <el-row>
-        <span>用户状态</span>
-        <el-select v-model="userState" clearable size="medium" placeholder="请选择">
+        <span>专业状态</span>
+        <el-select v-model="majorState" clearable size="medium" placeholder="请选择">
           <el-option
             v-for="item in options"
             :key="item.value"
@@ -47,11 +46,12 @@
         @selection-change="handleSelectionChange"
       >
         <el-table-column type="selection" width="60"></el-table-column>
-        <el-table-column prop="username" label="用户名" width="100"></el-table-column>
-        <el-table-column prop="gender" label="性别" width="80"></el-table-column>
-        <el-table-column prop="email" label="邮箱" width="200"></el-table-column>
-        <el-table-column prop="state" label="状态" width="80"></el-table-column>
-        <el-table-column prop="ts" label="创建时间" width="200"></el-table-column>
+        <el-table-column prop="majorid" label="专业编号" align="center" width="80"></el-table-column>
+        <el-table-column prop="majorname" label="专业名称" align="center" width="200"></el-table-column>
+        <el-table-column prop="school" label="学校名称" align="center" width="150"></el-table-column>
+        <el-table-column prop="ma_teacher" label="系主任" align="center" width="80"></el-table-column>
+        <el-table-column prop="state" label="专业状态" align="center" width="80"></el-table-column>
+        <el-table-column prop="ts" label="创建时间" align="center" width="250"></el-table-column>
       </el-table>
     </div>
     <div class="pagination">
@@ -73,6 +73,7 @@
 import axios from "axios";
 import dayjs from "dayjs";
 
+
 export default {
   name: "UserManage",
   data() {
@@ -91,7 +92,7 @@ export default {
           label: "禁用",
         },
       ],
-      userState: 2,
+      majorState: 2,
       time: "",
       searchInput: "",
       tableData: [],
@@ -103,16 +104,15 @@ export default {
   },
   mounted() {
     // 默认调用获取用户信息接口
-    this.getUserInfo();
+    this.getMajorInfo();
   },
   methods: {
-adduser(){
-      this.$router.replace('AddUser')
+
+    addmajor(){
+      this.$router.replace('AddMajor')
 
 },
-
-
-    getUserInfo(data){
+    getMajorInfo(data){
       console.log("data",data);
       // 接口复用，判断有误参数，再决定参数是否传递
       const obj = {
@@ -125,7 +125,7 @@ adduser(){
         obj.params = {...obj.params,...data};
       }
       axios
-      .get("/api/user/userinfo",obj)
+      .get("/api/major/Majorinfo",obj)
       .then((response) => {
         console.log(response);
         this.tableData = response.data.data.results;
@@ -146,48 +146,21 @@ adduser(){
         this.pageNum = val;
         this.search();
       },
-
-    // 重置密码
-    resetPassword(){
-      console.log(this.multipleSelection);
-      const userIdArr = [];
-      const emailList = [];
-      this.multipleSelection.forEach((item) => {
-        console.log(item);
-        // 如果用户禁用则不向后台发送对应用户数据
-        if(item.state === "有效"){
-          userIdArr.push(item.id);
-          emailList.push(item.email);
-        }
-      })
-      console.log(userIdArr,emailList);
-       axios
-      .post("/api/user/resetpassword",{
-        userIds: userIdArr,
-        emailList,
-      })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    },
   // 禁用账户
     disable(state){
-      const userIdArr = [];
+      const majorIdArr = [];
       this.multipleSelection.forEach((item) => {
         console.log(item);
         // 如果用户禁用则不向后台发送对应用户数据
         if(item.state === "有效" && !state){
-          userIdArr.push(item.id);
+          majorIdArr.push(item.id);
         } else if(item.state === "禁用" && state){
-          userIdArr.push(item.id);
+          majorIdArr.push(item.id);
         }
       })
        axios
-      .post("/api/user/disableOrActivatedUser",{
-        userIds: userIdArr,
+      .post("/api/major/disableOrActivatedMajor",{
+        majorIds: majorIdArr,
         state,
       })
       .then((response) => {
@@ -197,11 +170,10 @@ adduser(){
         console.log(error);
       });
     },
-
-    search(){
+search(){
       const data = {};
-      if(this.userState == 1 || this.userState == 0){
-        data.userState = this.userState
+      if(this.majorState == 1 || this.majorState == 0){
+        data.majorState= this.majorState
       }
       if(this.time){
         data.startTime = dayjs(this.time[0]).format("YYYY-MM-DD HH:mm:ss")
@@ -211,14 +183,17 @@ adduser(){
         data.searchInput = this.searchInput;
       }
 
-      this.getUserInfo(data)
+      this.getMajorInfo(data)
     },
-  },
+  
+  }
+
 };
+
 </script>
 
 <style lang="less" scoped>
-.usermanage {
+.majormanage {
   margin-left: 20px;
   width: 100%;
   p {

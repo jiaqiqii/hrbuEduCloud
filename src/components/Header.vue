@@ -6,7 +6,7 @@
       </div>
       <ul class="menus">
           <li>首页</li>
-          <router-link to="/menus/usermanage" tag="li">系统管理</router-link> 
+          <router-link to="/xitongMenus/usermanage" tag="li">系统管理</router-link> 
           <router-link to="/menus/stumanage" tag="li">教务管理</router-link> 
           <router-link to="/resourcesmenus/courseware" tag="li">资源库</router-link>
           <li>教研管理</li>
