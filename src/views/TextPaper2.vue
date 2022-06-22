@@ -24,8 +24,9 @@
                     <el-button type="text" class="buzhou1">第二步：组卷</el-button>
                 </div>
             </el-row>
-            <div>
-                
+            <div class="zujuan">
+                <el-button type="primary" class="zhineng">智能组卷</el-button>
+                <el-button type="primary" class="zhineng">自由组卷</el-button>
             </div>
         </div>
 
@@ -42,9 +43,9 @@ export default {
     margin-left: 25px;
     width: 100%;
 
-    .el-button {
-        font-size: 16px;
-    }
+    // .el-button {
+    //     font-size: 16px;
+    // }
 
     .tianjia {
         float: right;
@@ -86,6 +87,9 @@ export default {
         span {
             font-size: 14px;
             color: #7A7F85;
+        }
+        .zhineng{
+            margin: 150px 0 0 220px;
         }
     }
 

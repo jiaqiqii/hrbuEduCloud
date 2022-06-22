@@ -8,9 +8,15 @@
         <div class="content1">
             <el-row>
                 <i class="el-icon-warning"></i>
-                <span class="mingcheng">测评名称不可重复；测评名称、测评分类、测评简介为必填项，正确填写后点击右侧“保存&下一步”</span>
-                <el-button type="primary" size="medium">
+                <span class="mingcheng">测评名称不可重复；测评名称、测评分类、测评简介为必填项，正确填写后点击右侧“保存”“下一步”</span>
+                <!-- <el-button type="primary" size="medium">
                     <router-link to="/cepingguanli/TextManagement2" tag="li">保存&下一步</router-link>
+                </el-button> -->
+                <el-button type="primary" size="mini" @click="submitForm('ruleForm', ruleForm)">
+                    保存</el-button>
+                <el-button type="primary" size="mini">
+                    <router-link to="/cepingguanli/TextManagement" tag="li">
+                        下一步</router-link>
                 </el-button>
             </el-row>
         </div>
@@ -28,18 +34,18 @@
             </el-row>
             <el-row class="row1">
                 <span>测评名称</span>
-                <el-input v-model="input" placeholder="请输入名称，最多支持30个汉字"></el-input>
+                <el-input v-model="name" placeholder="请输入名称，最多支持30个汉字"></el-input>
             </el-row>
             <el-row class="row1">
                 <span>测评分类</span>
-                <el-select v-model="value1" size="medium" placeholder="请选择分类">
+                <el-select v-model="fenlei" size="medium" placeholder="请选择分类">
                     <el-option v-for="item in options1" :key="item.value" :label="item.label" :value="item.value">
                     </el-option>
                 </el-select>
             </el-row>
             <el-row class="row1">
                 <span>测评简介</span>
-                <el-input type="textarea" :rows="8" placeholder="填写测评的特征信息，最多支持100个汉字" v-model="textarea" class="shuru">
+                <el-input type="textarea" :rows="8" placeholder="填写测评的特征信息，最多支持100个汉字" v-model="jianjie" class="shuru">
                 </el-input>
 
             </el-row>
@@ -48,30 +54,56 @@
     </div>
 </template>
 <script>
+import axios from "axios";
 export default {
     data() {
         return {
             options1: [{
-                value: '选项1',
-                label: '请选择分类'
-            }, {
-                value: '选项2',
+                value: '练习',
                 label: '练习'
             }, {
-                value: '选项3',
+                value: '考试',
                 label: '考试'
             }, {
-                value: '选项4',
+                value: '认证',
                 label: '认证'
             }, {
-                value: '选项5',
+                value: '比赛',
                 label: '比赛'
             },],
-            value1: '',
-            input: '',
-            textarea: ''
+            fenlei: '',
+            name: '',
+            textarea: '',
+            jianjie:'',
+            input:'',
         }
-    }
+    },
+    methods: {
+        submitForm() {
+                axios
+                    .post("/api/ceping/addteach", {
+                        name: this.name,
+                        fenlei: this.fenlei,
+                        jianjie: this.jianjie,
+
+                    })
+                    .then((response) => {
+                        console.log(response);
+                        this.$message({
+                            message: "保存成功",
+                            type: "success",
+                        });
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+
+
+        },
+        resetForm(formName) {
+            this.$refs[formName].resetFields();
+        },
+    },
 }
 </script>
 <style lang="less" scoped>
@@ -109,9 +141,9 @@ export default {
 
         .el-button {
             font-size: 16px;
-            float: right;
+            // float: right;
             margin-right: 20px;
-            width: 120px;
+            width: 100px;
             height: 35px;
             font-size: 14px;
             color: #f5f8fa;

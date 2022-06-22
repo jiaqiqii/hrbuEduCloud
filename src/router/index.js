@@ -44,12 +44,32 @@ import ClassEdit from "../views/ClassEdit";
 
 import ResourcesMenus from "../views/ResourcesMenus";
 import XitongMenus from "../views/XitongMenus";
+//引入用户管理
 import UserManage from "../views/UserManage";
+//引入新增用户
+import AddUser from "../views/AddUser"
+import PositionManage from "../views/PositionManage"
+//引入知识点菜单
 import KnowledgeMenus from "../views/KnowledgeMenus";
+//引入学校管理
+import SchoolManage from "../views/SchoolManage"
+//引入新增学校
+import AddSchool from "../views/AddSchool"
+//引入专业管理
+import MajorManage from "../views/MajorManage"
+//引入新增专业
+import AddMajor from "../views/AddMajor"
+//引入角色管理
+import RoleManage from "../views/RoleManage"
+//引入新增角色
+import AddRole from "../views/AddRole"
+//引入菜单管理
+import MenusManage from "../views/MenusManage"
 import CourseWare from "../views/CourseWare";
 import caidan1 from "../views/caidan1";
 import cepingguanli from "../views/cepingguanli";
 import shijuanguanli from "../views/shijuanguanli";
+import chengjipigai from "../views/chengjipigai";
 import TextManagement from "../views/TextManagement";
 import TextManagement1 from "../views/TextManagement1";
 import TextManagement2 from "../views/TextManagement2";
@@ -57,6 +77,7 @@ import TextManagement3 from "../views/TextManagement3";
 import TextPaper from "../views/TextPaper";
 import TextPaper1 from "../views/TextPaper1";
 import TextPaper2 from "../views/TextPaper2";
+import CorrectingResults from "../views/CorrectingResults";
 import CourseRelease from "../views/CourseRelease";
 // export default new VueRouter({
 const router = new VueRouter({
@@ -161,10 +182,56 @@ const router = new VueRouter({
           component: UserManage,
         },
         {
+          path:"adduser",
+          name: "AddUser",
+           component: AddUser
+        },
+        {
+          path:"positionmanage",
+          name: "PositionManage",
+          component:PositionManage 
+        },
+      
+      {
+          path:"menusmanage",
+          name: "MenusManage",
+          component: MenusManage
+      },
+      {
+          path:"rolemanage",
+          name: "RoleManage",
+          component: RoleManage
+      },
+      {
+              path:"addrole",
+              name: "AddRole",
+              component: AddRole
+      },
+        {
           path: "knowledgemenus",
           name: "KnowledgeMenus",
           component: KnowledgeMenus,
         },
+        {
+          path:"schoolmanage",
+          name: "SchoolManage",
+          component: SchoolManage
+      },
+      {
+              path:"addschool",
+              name: "AddSchool",
+              component: AddSchool
+      },
+      {
+          path:"majormanage",
+          name: "MajorManage",
+          component: MajorManage
+      },
+      {
+          path:"addmajor",
+          name: "AddMajor",
+          component: AddMajor
+      },
       ],
     },
     {
@@ -225,6 +292,28 @@ const router = new VueRouter({
           name: "TextPaper2",
           component: TextPaper2,
         },
+      ],
+    },
+    {
+      path: "/chengjipigai",
+      name: "chengjipigai",
+      component: chengjipigai,
+      children: [
+        {
+          path: "correctingresults",
+          name: "CorrectingResults",
+          component: CorrectingResults,
+        },
+        // {
+        //   path: "textpaper1",
+        //   name: "TextPaper1",
+        //   component: TextPaper1,
+        // },
+        // {
+        //   path: "textpaper2",
+        //   name: "TextPaper2",
+        //   component: TextPaper2,
+        // },
       ],
     },
     {

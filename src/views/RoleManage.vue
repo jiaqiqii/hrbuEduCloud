@@ -2,19 +2,9 @@
   <div class="rolemanage">
     <p>角色管理</p>
     <el-row>
-      <el-button type="primary" size="medium">新增角色</el-button>
-      <el-button
-        size="medium"
-        @click="disable(0)"
-        :disabled="!multipleSelection.length"
-        >禁用</el-button
-      >
-      <el-button
-        size="medium"
-        @click="disable(1)"
-        :disabled="!multipleSelection.length"
-        >激活</el-button
-      >
+      <el-button type="primary" size="medium" @click="addrole">新增角色</el-button>
+      <el-button size="medium" @click="disable(0)" :disabled="!multipleSelection.length">禁用</el-button>
+      <el-button size="medium" @click="disable(1)" :disabled="!multipleSelection.length">激活</el-button>
     </el-row>
     <div class="content">
       <el-row>
@@ -33,7 +23,16 @@
           >
           </el-option>
         </el-select>
-
+        <span class="ml20">创建日期</span>
+        <el-date-picker
+          size="medium"
+          v-model="time"
+          type="daterange"
+          range-separator="至"
+          start-placeholder="开始日期"
+          end-placeholder="结束日期"
+        >
+        </el-date-picker>
         <span class="ml20">关键词</span>
         <el-input
           placeholder="请输入内容"
@@ -42,6 +41,7 @@
           clearable
         >
         </el-input>
+        <el-button @click="search" type="primary" size="medium">搜索</el-button>
       </el-row>
       <el-table
         ref="multipleTable"
@@ -101,6 +101,8 @@
 
 <script>
 import axios from "axios";
+import dayjs from "dayjs";
+
 
 export default {
   name: "RoleManage",
@@ -120,8 +122,8 @@ export default {
           label: "禁用",
         },
       ],
-      roleState: "",
-
+      roleState: 2,
+      time: "",
       searchInput: "",
       tableData: [],
       multipleSelection: [],
@@ -131,29 +133,93 @@ export default {
     };
   },
   mounted() {
-    axios
-      .get("/api/role/roleinfo")
+    // 默认调用获取用户信息接口
+    this.getRoleInfo();
+  },
+  methods: {
+
+
+addrole(){
+      this.$router.replace('AddRole')
+
+},
+    getRoleInfo(data){
+      console.log("data",data);
+      // 接口复用，判断有误参数，再决定参数是否传递
+      const obj = {
+        params:{
+          pageNum: this.pageNum,
+          pageSize: this.pageSize
+        }
+      }
+      if(data){
+        obj.params = {...obj.params,...data};
+      }
+      axios
+      .get("/api/role/roleinfo",obj)
       .then((response) => {
-        // console.log(response);
-        this.tableData = response.data.data;
-        console.log(this.tableData);
+        console.log(response);
+        this.tableData = response.data.data.results;
+        this.total = response.data.data.total;
       })
       .catch((error) => {
         console.log(error);
       });
-  },
-  methods: {
+    },
     handleSelectionChange(val) {
       this.multipleSelection = val;
     },
-    handleSizeChange(val) {
-      console.log(`每页 ${val} 条`);
+      handleSizeChange(val) {
+        this.pageSize = val;
+        this.search();
+      },
+      handleCurrentChange(val) {
+        this.pageNum = val;
+        this.search();
+      },
+    // 禁用账户
+    disable(state){
+      const roleIdArr = [];
+      this.multipleSelection.forEach((item) => {
+        console.log(item);
+        // 如果用户禁用则不向后台发送对应用户数据
+        if(item.state === "有效" && !state){
+          roleIdArr.push(item.id);
+        } else if(item.state === "禁用" && state){
+          roleIdArr.push(item.id);
+        }
+      })
+       axios
+      .post("/api/role/disableOractivatedrole",{
+        roleIds: roleIdArr,
+        state,
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     },
-    handleCurrentChange(val) {
-      console.log(`当前页: ${val}`);
+    search(){
+      const data = {};
+      if(this.roleState == 1 || this.roleState == 0){
+        data.roleState = this.roleState
+      }
+      if(this.time){
+        data.startTime = dayjs(this.time[0]).format("YYYY-MM-DD HH:mm:ss")
+        data.endTime = dayjs(this.time[1]).format("YYYY-MM-DD HH:mm:ss")
+      }
+      if(this.searchInput){
+        data.searchInput = this.searchInput;
+      }
+
+      this.getRoleInfo(data)
     },
+  
   },
 };
+
 </script>
 
 
@@ -164,7 +230,7 @@ export default {
   p {
     color: #7a7f85;
     line-height: 56px;
-    display: inline;
+
   }
   .content {
     width: 960px;
@@ -182,10 +248,13 @@ export default {
         margin-left: 20px;
       }
       .el-select {
-        width: 200px;
+        width: 95px;
       }
       .el-input {
         width: 187px;
+      }
+      .el-button {
+        margin-left: 20px;
       }
     }
     .el-table {
