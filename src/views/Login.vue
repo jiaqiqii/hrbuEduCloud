@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import axios from "axios"
+
 import Md5 from "md5"
 
 export default {
@@ -38,11 +38,16 @@ export default {
       login(){
           console.log("登录",this.username,this.password)
         //   调用登录接口 对用户名/学号 密码进行校验 
-        axios.post("/api/system/user/login", {
+        this.$axios.post("/api/system/user/login", {
             username:this.username,
             password:Md5(this.password)
           }).then((response) => {
               console.log(response)
+              // 将用户名存储到vuex
+              this.$store.state.username = response.data.username
+              // 将token存储到localstorage
+              localStorage.setItem("Authorization",response.data.token)
+
               if(response.data.state == 1){
                 this.$router.push("/admin");
               }else if (response.data.state == 2){

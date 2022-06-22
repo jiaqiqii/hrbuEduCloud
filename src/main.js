@@ -8,6 +8,9 @@ import store from "./store"
 // 引入VueRouter
 import router from "./router"
 
+// 引入axios
+import axios from "./axios"
+
 
 import { 
   Input, 
@@ -62,7 +65,10 @@ new Vue({
   router,
   beforeCreate(){
     // 添加全局事件总线
-    Vue.prototype.$bus = this
+    Vue.prototype.$bus = this;
+
+    Vue.prototype.$axios = axios;
+
   },
   
 }).$mount('#app')

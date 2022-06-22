@@ -98,7 +98,6 @@
       >
       </el-pagination>
     </div>
-    <!-- <button @click="stuNum">学生人数</button> -->
   </div>
 </template>
 
@@ -196,8 +195,6 @@ export default {
           console.log(response);
           this.tableData = response.data.data.results;
           this.total = response.data.data.total;
-
-         
         })
         .catch((error) => {
           console.log(error);
@@ -206,7 +203,7 @@ export default {
 
 
 
-     // // 获取班级学生人数
+     // // 获取班级学生人数 否定
           // const obj2 = {
           //   params: {
           //     school: this.tableData[0].school,

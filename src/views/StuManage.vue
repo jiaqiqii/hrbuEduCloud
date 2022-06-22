@@ -117,7 +117,6 @@
 </template>
 
 <script>
-import axios from "axios";
 export default {
   name: "StuManage",
   data() {
@@ -172,7 +171,7 @@ export default {
       if (data) {
         obj.params = { ...obj.params, ...data };
       }
-      axios
+      this.$axios
         .get("/api/stu/stuinfo", obj)
         .then((response) => {
           console.log(response);
@@ -219,7 +218,7 @@ export default {
       console.log(stuIdArr);
       console.log(emailList);
 
-      axios
+      this.$axios
         .post("/api/stu/resetpassword", {
           stuIds: stuIdArr,
           emailList,
@@ -256,7 +255,7 @@ export default {
           stuIdArr.push(item.id);
         }
       });
-      axios
+      this.$axios
         .post("/api/stu/statestu", {
           stuIds: stuIdArr,
           state,

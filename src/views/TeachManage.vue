@@ -333,7 +333,7 @@ export default {
     width: 570px;
     height: 50px;
     margin-top: 20px;
-    margin-bottom: 335px;
+    margin-bottom: 215px;
     background-color: #fff;
     float: right;
 

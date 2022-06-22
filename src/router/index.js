@@ -58,7 +58,9 @@ import TextPaper from "../views/TextPaper";
 import TextPaper1 from "../views/TextPaper1";
 import TextPaper2 from "../views/TextPaper2";
 import CourseRelease from "../views/CourseRelease";
-export default new VueRouter({
+// export default new VueRouter({
+const router = new VueRouter({
+
   routes: [
     {
       path: "/",
@@ -245,16 +247,19 @@ export default new VueRouter({
 });
 
 
-// 路由守卫
+// 路由守卫 以页面为模块，不让用户看到
+// JWT 以接口为模块，不让用户调用
 
-// router.beforeEach((to, from, next) => {
-//   if(to.path === '/' || to.path=== '/forgetpassword'){
-//     next();
-//   }else {
-//     const token = localStorage.getItem('token')
-//     if (token){
-//       next()
-//     }
-//   }
-// })
-// export default router;
+router.beforeEach((to, from, next) => {
+  if(to.path === '/' || to.path=== '/forgetpassword'){
+    next();
+  }else {
+    const token = localStorage.getItem('Authorization')
+    if (token){
+      next()
+    }else{
+      next('/login')
+    }
+  }
+})
+export default router;

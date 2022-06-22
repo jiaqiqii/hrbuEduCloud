@@ -342,13 +342,19 @@ export default {
             .then((response) => {
               // console.log(data)
               console.log(response);
+              this.$message({
+                  message: "新增学生成功!该学生状态已激活",
+                  type: "success",
+                });
             })
             .catch((error) => {
               console.log(error);
             });
-          alert("提交成功!该学生状态已激活，初始密码为123456。");
         } else {
-          alert("信息输入不符合要求！");
+          this.$message({
+                  message: "信息输入不符合要求！请按照要求输入学生信息",
+                  type: "error",
+                });
           return false;
         }
       });
