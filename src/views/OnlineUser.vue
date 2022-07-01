@@ -1,13 +1,12 @@
 <template>
-  <div class="knowledgemenus">
-    <p>数据字典</p>
-    <span>>知识点目录维护</span>
+  <div class="onlineuser">
+    <p>在线用户管理</p>
     <el-row>
-      <el-button size="medium">移动</el-button>
+      <el-button type="primary" size="medium">在线人数</el-button>
     </el-row>
     <div class="content">
       <el-row>
-        <span>知识点</span>
+        <span>在线状态</span>
 
         <el-select
           v-model="value2"
@@ -17,14 +16,14 @@
           placeholder="全部"
         >
           <el-option
-            v-for="item in options1"
+            v-for="item in options"
             :key="item.value"
             :label="item.label"
             :value="item.value"
           >
           </el-option>
-          
         </el-select>
+        <span>学校</span>
         <el-select
           v-model="value2"
           multiple
@@ -33,15 +32,14 @@
           placeholder="请选择"
         >
           <el-option
-            v-for="item in options2"
+            v-for="item in options"
             :key="item.value"
             :label="item.label"
             :value="item.value"
           >
           </el-option>
-          
         </el-select>
-
+        <span>专业</span>
         <el-select
           v-model="value2"
           multiple
@@ -50,17 +48,16 @@
           placeholder="请选择"
         >
           <el-option
-            v-for="item in options3"
+            v-for="item in options"
             :key="item.value"
             :label="item.label"
             :value="item.value"
           >
           </el-option>
-          
         </el-select>
         <span class="ml20">关键字</span>
         <el-input
-          placeholder="请输入内容"
+          placeholder="请输入用户名"
           v-model="searchInput"
           size="medium"
           clearable
@@ -74,11 +71,47 @@
         style="width: 100%"
         @selection-change="handleSelectionChange"
       >
-        <el-table-column type="selection" width="60"></el-table-column>
-        <el-table-column prop="knowledge_name" label="知识点名称" align="center" width="250"></el-table-column>
-        <el-table-column prop="knowledge_directory" label="目录" align="center" width="400"></el-table-column>
-        <el-table-column prop="caozuo" label="操作" align="center" width="200"></el-table-column>
-        
+        <el-table-column
+          type="selection"
+          align="center"
+          width="60"
+        ></el-table-column>
+        <el-table-column
+          prop="username"
+          align="center"
+          label="用户名"
+          width="120"
+        ></el-table-column>
+        <el-table-column
+          prop="teachname"
+          align="center"
+          label="姓名"
+          width="100"
+        ></el-table-column>
+        <el-table-column
+          prop="school"
+          align="center"
+          label="学校"
+          width="100"
+        ></el-table-column>
+        <el-table-column
+          prop="major"
+          align="center"
+          label="专业"
+          width="100"
+        ></el-table-column>
+        <el-table-column
+          prop="position"
+          align="center"
+          label="职位"
+          width="150"
+        ></el-table-column>
+        <el-table-column
+          prop="onlinestate"
+          align="center"
+          label="在线状态"
+          width="100"
+        ></el-table-column>
       </el-table>
     </div>
     <div class="pagination">
@@ -101,60 +134,28 @@
 <script>
 import axios from "axios";
 
-
 export default {
   name: "UserManage",
   data() {
     return {
-      options1: [
+      options: [
         {
           value: 2,
           label: "全部",
         },
         {
           value: 1,
-          label: "IT互联网",
+          label: "有效",
         },
         {
           value: 0,
-          label: "物联网",
+          label: "禁用",
         },
       ],
-      options2: [
-        {
-          value: 3,
-          label: "请选择",
-        },
-        {
-          value: 2,
-          label: "大数据",
-        },
-        {
-          value: 1,
-          label: "前端开发",
-        },
-        {
-          value: 0,
-          label: "后端开发",
-        },
-      ],
-      options3: [
-        {
-          value: 2,
-          label: "请选择",
-        },
-        {
-          value: 1,
-          label: "HTML/CSS",
-        },
-        {
-          value: 0,
-          label: "JavaScript",
-        },
-      ],
+
       value1: [],
       value2: [],
-      userState: 2,
+      onlineuserState: 2,
       searchInput: "",
       tableData: [],
       multipleSelection: [],
@@ -165,68 +166,66 @@ export default {
   },
   mounted() {
     // 默认调用获取用户信息接口
-    this.getKnowledgeInfo();
+    this.getonlineUserInfo();
   },
   methods: {
-    getKnowledgeInfo(data){
-      console.log("data",data);
+    getonlineUserInfo(data) {
+      console.log("data", data);
       // 接口复用，判断有误参数，再决定参数是否传递
       const obj = {
-        params:{
+        params: {
           pageNum: this.pageNum,
-          pageSize: this.pageSize
-        }
-      }
-      if(data){
-        obj.params = {...obj.params,...data};
+          pageSize: this.pageSize,
+        },
+      };
+      if (data) {
+        obj.params = { ...obj.params, ...data };
       }
       axios
-      .get("/api/knowledge/knowledgeinfo",obj)
-      .then((response) => {
-        console.log(response);
-        this.tableData = response.data.data.results;
-        this.total = response.data.data.total;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+        .get("/api/user/onlineuserinfo", obj)
+        .then((response) => {
+          console.log(response);
+          this.tableData = response.data.data.results;
+          this.total = response.data.data.total;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
     handleSelectionChange(val) {
       this.multipleSelection = val;
     },
-      handleSizeChange(val) {
-        this.pageSize = val;
-        this.search();
-      },
-      handleCurrentChange(val) {
-        this.pageNum = val;
-        this.search();
-      },
-    
-    search(){
+    handleSizeChange(val) {
+      this.pageSize = val;
+      this.search();
+    },
+    handleCurrentChange(val) {
+      this.pageNum = val;
+      this.search();
+    },
+    search() {
       const data = {};
-      
-      if(this.searchInput){
+      if (this.onlineuserState == 1 || this.onlineuserState == 0) {
+        data.onlineuserState = this.onlineuserState;
+      }
+      if (this.searchInput) {
         data.searchInput = this.searchInput;
       }
-
-      this.getKnowledgeInfo(data)
+      this.getonlineUserInfo(data);
     },
-  
   },
 };
-
-
 </script>
 
 <style lang="less" scoped>
-.knowledgemenus {
+.onlineuser {
   margin-left: 20px;
   width: 100%;
   p {
-    color: #7a7f85;
+    color: #000;
     line-height: 56px;
     display: inline;
+    font-weight: bold;
   }
   .content {
     width: 960px;
@@ -241,15 +240,15 @@ export default {
         margin-right: 10px;
       }
       .ml20 {
-        margin-left: 20px;
+        margin-left: 10px;
       }
       .el-select {
-        width: 200px;
+        width: 90px;
+        margin: 0 10px 0 0;
       }
       .el-input {
         width: 187px;
       }
-      
     }
     .el-table {
       margin-top: 20px;
@@ -265,7 +264,6 @@ export default {
           border-right: 1px solid #ebeef5;
         }
       }
-
     }
   }
   .pagination {

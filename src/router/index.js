@@ -65,6 +65,8 @@ import RoleManage from "../views/RoleManage"
 import AddRole from "../views/AddRole"
 //引入菜单管理
 import MenusManage from "../views/MenusManage"
+//引入在线用户管理
+import OnlineUser from "../views/OnlineUser"
 import CourseWare from "../views/CourseWare";
 import caidan1 from "../views/caidan1";
 import cepingguanli from "../views/cepingguanli";
@@ -232,6 +234,11 @@ const router = new VueRouter({
           name: "AddMajor",
           component: AddMajor
       },
+      {
+        path:"onlineuser",
+        name: "OnlineUser",
+        component: OnlineUser
+    },
       ],
     },
     {
