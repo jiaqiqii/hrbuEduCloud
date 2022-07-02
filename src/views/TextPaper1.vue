@@ -67,7 +67,6 @@
     </div>
 </template>
 <script>
-import axios from "axios";
 export default {
     data() {
         return {
@@ -119,7 +118,7 @@ export default {
     },
     methods: {
         submitForm() {
-                axios
+                this.$axios
                     .post("/api/shijuan/addteach", {
                         name: this.name,
                         fenlei: this.fenlei,

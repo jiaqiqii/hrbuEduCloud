@@ -52,7 +52,6 @@
 </template>
 
 <script>
-import axios from "axios";
 
 export default {
   name: "ClassEdit",
@@ -90,7 +89,7 @@ export default {
         if (this.classname) {
         data.classname = this.classname;
         data.id = this.id;
-        axios
+        this.$axios
         .post("/api/class/editclass", data)
         .then((response) => {
           // console.log(data)

@@ -80,7 +80,7 @@
 </template>
 
 <script>
-import axios from "axios";
+
 export default {
   name: "StuCheck",
   data() {
@@ -107,7 +107,7 @@ export default {
         id: this.$route.query.id,
       },
     };
-    axios
+    this.$axios
       .get("/api/stu/stucheck", obj)
       .then((response) => {
         console.log(response.data.data);
@@ -123,7 +123,7 @@ export default {
     // 重置密码
     resetPassword() {
       console.log(this.stuData.id);
-      axios
+      this.$axios
         .post("/api/stu/resetpassword", {
           stuIds:[this.stuData.id],
           emailList:[this.stuData.email]
@@ -153,7 +153,7 @@ export default {
     // 结课激活
     disable(state){
       console.log(this.stuData.id)
-      axios
+      this.$axios
         .post("/api/stu/statestu", {
           stuIds: [this.stuData.id],
           state

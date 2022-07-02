@@ -172,7 +172,7 @@
 </template>
 
 <script>
-import axios from "axios";
+
 export default {
   name: "StuAdd",
   data() {
@@ -327,7 +327,7 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          axios
+          this.$axios
             .post("/api/stu/addstu", {
               code: this.numberValidateForm.code,
               stuname: this.numberValidateForm.stuname,

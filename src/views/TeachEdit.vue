@@ -101,7 +101,6 @@
 </template>
 
 <script>
-import axios from "axios"
 export default {
   name: "StuEdit",
   data() {
@@ -216,7 +215,7 @@ export default {
         console.log(ruleForm.school),
         this.$refs[formName].validate((valid) => {
           if (valid) {
-             axios
+             this.$axios
             .post("/api/teacher/editteach", {
               id:this.id,
               username: this.ruleForm.username,

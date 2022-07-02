@@ -102,7 +102,6 @@
 </template>
 
 <script>
-import axios from "axios";
 export default {
   name: "ClassManage",
   data() {
@@ -189,7 +188,7 @@ export default {
         obj.params = { ...obj.params, ...data };
       }
       console.log("obj", obj);
-      axios
+      this.$axios
         .get("/api/class/classinfo", obj)
         .then((response) => {
           console.log(response);
@@ -255,7 +254,7 @@ export default {
         }
       });
 
-      axios
+      this.$axios
         .post("/api/class/stateclass", {
           classIds: classIdArr,
           state,

@@ -144,7 +144,7 @@
 </template>
 
 <script>
-import axios from "axios"
+
 export default {
   name: "StuEdit",
   data() {
@@ -153,123 +153,7 @@ export default {
         "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png",
       size: "",
       value: [],
-      // options: [
-      //   {
-      //     value: "哈尔滨学院",
-      //     label: "哈尔滨学院",
-
-      //     children: [
-      //       {
-      //         value: "计算机",
-      //         label: "计算机",
-      //         children: [
-      //           {
-      //             value: "计算机201901",
-      //             label: "计算机201901",
-      //           },
-      //           {
-      //             value: "计算机201902",
-      //             label: "计算机201902",
-      //           },
-      //         ],
-      //       },
-      //       {
-      //         value: "软件工程",
-      //         label: "软件工程",
-      //         children: [
-      //           {
-      //             value: "软件工程201901",
-      //             label: "软件工程201901",
-      //           },
-      //           {
-      //             value: "软件工程201902",
-      //             label: "软件工程201902",
-      //           },
-      //           {
-      //             value: "软件工程201903",
-      //             label: "软件工程201903",
-      //           },
-      //         ],
-      //       },
-      //     ],
-      //   },
-      //   {
-      //     value: "四川大学",
-      //     label: "四川大学",
-      //     children: [
-      //       {
-      //         value: "计算机",
-      //         label: "计算机",
-      //         children: [
-      //           {
-      //             value: "计算机201901",
-      //             label: "计算机201901",
-      //           },
-      //           {
-      //             value: "计算机201902",
-      //             label: "计算机201902",
-      //           },
-      //         ],
-      //       },
-      //       {
-      //         value: "软件工程",
-      //         label: "软件工程",
-      //         children: [
-      //           {
-      //             value: "软件工程201901",
-      //             label: "软件工程201901",
-      //           },
-      //           {
-      //             value: "软件工程201902",
-      //             label: "软件工程201902",
-      //           },
-      //           {
-      //             value: "软件工程201903",
-      //             label: "软件工程201903",
-      //           },
-      //         ],
-      //       },
-      //     ],
-      //   },
-      //   {
-      //     value: "青岛大学",
-      //     label: "青岛大学",
-      //     children: [
-      //       {
-      //         value: "计算机",
-      //         label: "计算机",
-      //         children: [
-      //           {
-      //             value: "计算机201901",
-      //             label: "计算机201901",
-      //           },
-      //           {
-      //             value: "计算机201902",
-      //             label: "计算机201902",
-      //           },
-      //         ],
-      //       },
-      //       {
-      //         value: "软件工程",
-      //         label: "软件工程",
-      //         children: [
-      //           {
-      //             value: "软件工程201901",
-      //             label: "软件工程201901",
-      //           },
-      //           {
-      //             value: "软件工程201902",
-      //             label: "软件工程201902",
-      //           },
-      //           {
-      //             value: "软件工程201903",
-      //             label: "软件工程201903",
-      //           },
-      //         ],
-      //       },
-      //     ],
-      //   },
-      // ],
+      
       options0: [
         {
           value: "哈尔滨学院",
@@ -381,7 +265,7 @@ export default {
         console.log(ruleForm.school),
         this.$refs[formName].validate((valid) => {
           if (valid) {
-             axios
+             this.$axios
             .post("/api/stu/editstu", {
               id:this.id,
               code: this.ruleForm.code,

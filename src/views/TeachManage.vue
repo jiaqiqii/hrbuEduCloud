@@ -104,7 +104,6 @@
 </template>
 
 <script>
-import axios from "axios";
 export default {
   name: "TeachManage",
   data() {
@@ -149,7 +148,7 @@ export default {
       if (data) {
         obj.params = { ...obj.params, ...data };
       }
-      axios
+      this.$axios
         .get("/api/teacher/teachinfo", obj)
         .then((response) => {
           console.log(response);
@@ -181,7 +180,7 @@ export default {
         emailList.push(item.email);
       });
       console.log(teachIdArr);
-      axios
+      this.$axios
         .post("/api/teacher/resetpassword", {
           teachIds: teachIdArr,
           emailList,
@@ -218,7 +217,7 @@ export default {
         }
         console.log(teachIdArr)
       });
-      axios
+      this.$axios
         .post("/api/teacher/stateteach", {
           teachIds: teachIdArr,
           state,

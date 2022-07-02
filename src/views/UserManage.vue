@@ -70,9 +70,7 @@
 </template>
 
 <script>
-import axios from "axios";
 import dayjs from "dayjs";
-
 export default {
   name: "UserManage",
   data() {
@@ -124,7 +122,7 @@ adduser(){
       if(data){
         obj.params = {...obj.params,...data};
       }
-      axios
+      this.$axios
       .get("/api/user/userinfo",obj)
       .then((response) => {
         console.log(response);
@@ -161,7 +159,7 @@ adduser(){
         }
       })
       console.log(userIdArr,emailList);
-       axios
+       this.$axios
       .post("/api/user/resetpassword",{
         userIds: userIdArr,
         emailList,
@@ -185,7 +183,7 @@ adduser(){
           userIdArr.push(item.id);
         }
       })
-       axios
+       this.$axios
       .post("/api/user/disableOrActivatedUser",{
         userIds: userIdArr,
         state,

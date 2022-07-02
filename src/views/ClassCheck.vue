@@ -52,7 +52,6 @@
 </template>
 
 <script>
-import axios from "axios";
 export default {
   name: "ClassCheck",
  data() {
@@ -75,7 +74,7 @@ export default {
         id: this.$route.query.id,
       },
     };
-    axios
+    this.$axios
       .get("/api/class/classcheck", obj)
       .then((response) => {
         console.log(response);
