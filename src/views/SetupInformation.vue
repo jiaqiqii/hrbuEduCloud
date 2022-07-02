@@ -1,13 +1,14 @@
 <template>
     <div class="setupinformation">
-      <p>课件库 > 新增课件</p>
+       <router-link to="/resourcesmenus/courseware" tag="p" class="courseware"
+        >课件库 > 新增课件</router-link>
       <div class="daohang">
           <ul>
               <img src="../assets/hongbiao.png" alt="" class="hongbiao">
               <span>“课件名称”已保存但尚未发布，还处于草稿状态，设置基本信息并发布后才可以应用在公开课中。</span>
           </ul>
           <el-row>
-              <el-button type="primary" size="medium" @click="SetupInformation">保存&下一步</el-button>
+              <el-button type="primary" size="medium" @click="DoExercise">保存&下一步</el-button>
           </el-row>
       </div>
       <div class="content">
@@ -29,17 +30,14 @@
                 <el-input placeholder="请输入内容" v-model="input" clearable size="medium"></el-input>
             </div>
             <div class="leixing">
-                <span>课件文件</span>
+                <span>知识点</span>
                 
-                <el-select v-model="value" clearable size="medium" placeholder="请选择">
-                <el-option
-                    v-for="item in options"
-                    :key="item.value"
-                    :label="item.label"
-                    :value="item.value"
-                >
-                </el-option>
-                </el-select>
+                <el-cascader
+                  :options="options2"
+                  size="medium"
+                  clearable
+                  placeholder=""
+          ></el-cascader>
             </div>
             <div class="leixing">
                 <span>难度</span>
@@ -66,16 +64,7 @@
                     v-model="textarea">
                     </el-input>
             </div>
-             <!-- <div class="wenjian">
-                <span>课件文件</span>
-                <el-row>
-                    <el-button type="primary" size="medium" @click="NewCourseware">选择文件</el-button>
-                </el-row>
-                <p class="tishi">
-                    <img src="../assets/huitan.png" alt="">
-                    <span>上传最大数量为1个，支持.mp4格式/上传最大数量为1个，支持.pdf格式</span>
-                </p>
-            </div>  -->
+             
        </div>
           
     </div>
@@ -119,10 +108,73 @@ export default {
           label: "高级",
         },
       ],
+      options2: [
+        {
+          value: "zhinan",
+          label: "IT/互联网",
+          children: [
+            {
+              value: "shejiyuanze",
+              label: "前端开发",
+              children: [
+                {
+                  value: "yizhi",
+                  label: "HTML",
+                  children: [
+                    {
+                      value: "yizhi",
+                      label: "标签",
+                    },
+                    {
+                      value: "yizhi",
+                      label: "语法",
+                    },
+                    {
+                      value: "yizhi",
+                      label: "语义化",
+                    },
+                    {
+                      value: "yizhi",
+                      label: "适配",
+                    },
+                  ],
+                },
+                {
+                  value: "fankui",
+                  label: "CSS",
+                },
+                {
+                  value: "xiaolv",
+                  label: "JavaScript",
+                },
+              ],
+            },
+            {
+              value: "daohang",
+              label: "后端开发",
+              children: [
+                {
+                  value: "cexiangdaohang",
+                  label: "侧向导航",
+                },
+                {
+                  value: "dingbudaohang",
+                  label: "顶部导航",
+                },
+              ],
+            },
+          ],
+        },
+      ],
       value: "",
        textarea: '',
     }
-    }
+    },
+    methods:{
+      DoExercise(){
+          this.$router.replace('DoExercise')
+      },
+  }
 }
 </script>
 

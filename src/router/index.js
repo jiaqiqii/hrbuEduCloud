@@ -67,7 +67,23 @@ import AddRole from "../views/AddRole"
 import MenusManage from "../views/MenusManage"
 //引入在线用户管理
 import OnlineUser from "../views/OnlineUser"
+import Menus1 from "../views/Menus1"
 import CourseWare from "../views/CourseWare";
+import NewCourseware from "../views/NewCourseware"
+import ItemBank from "../views/ItemBank"
+import SetupInformation from "../views/SetupInformation"
+import DoExercise from "../views/DoExercise"
+import AdmMenus from "../components/AdmMenus.vue"
+import CurriculumDesign from "../views/CurriculumDesign"
+import NewCurriculum from '../views/NewCurriculum';
+import SetCourse from '../views/SetCourse';
+import AddCourse from '../views/AddCourse';
+import NewCurriculumHint1 from '../views/NewCurriculumHint1';
+import NewCurriculumHint2 from '../views/NewCurriculumHint2';
+import CourseInfo from '../views/CourseInfo';
+import AddClass from '../views/AddClass';
+import SelectAddclass from '../views/SelectAddclass';
+import PreviewCourse from '../views/PreviewCourse';
 import caidan1 from "../views/caidan1";
 import cepingguanli from "../views/cepingguanli";
 import shijuanguanli from "../views/shijuanguanli";
@@ -323,18 +339,157 @@ const router = new VueRouter({
         // },
       ],
     },
+    // {
+    //   path: "/resourcesmenus",
+    //   name: "ResourcesMenus",
+    //   component: ResourcesMenus,
+    //   children: [
+    //     {
+    //       path: "courseware",
+    //       name: "CourseWare",
+    //       component: CourseWare,
+    //     },
+    //   ],
+    // },
     {
-      path: "/resourcesmenus",
+      path:"/menus1",
+      name: "Menus1",
+      component:Menus1,
+      children:[
+          {
+              path:"usermanage",  //子集不能写/
+              name: "UserManage",
+              component:UserManage
+          }
+      ]
+
+  },
+  {
+      path:"/resourcesmenus",
       name: "ResourcesMenus",
-      component: ResourcesMenus,
+      component:ResourcesMenus,
+      children:[
+          {
+              path:"courseware",  //子集不能写/
+              name: "CourseWare",
+              component:CourseWare
+          }
+      ]
+
+  },
+  {
+      path:"/resourcesmenus",
+      name: "ResourcesMenus",
+      component:ResourcesMenus,
+      children:[
+          {
+              path:"newcourseware",  //子集不能写/
+              name: "NewCourseware",
+              component:NewCourseware,
+          },
+          {
+              path:"itembank",  //子集不能写/
+              name: "ItemBank",
+              component:ItemBank
+          },
+      ]
+
+  },
+  {
+      path:"/resourcesmenus",
+      name: "ResourcesMenus",
+      component:ResourcesMenus,
+      children:[
+          {
+              path:"setupinformation",  //子集不能写/
+              name: "SetupInformation",
+              component:SetupInformation
+          }
+      ]
+
+  },
+  {
+      path:"/resourcesmenus",
+      name: "ResourcesMenus",
+      component:ResourcesMenus,
+      children:[
+          {
+              path:"doexercise",  //子集不能写/
+              name: "DoExercise",
+              component:DoExercise
+          }
+      ]
+
+  },
+ 
+  {
+
+      path: "/AdmMenus",
+      name: "AdmMenus",
+      component: AdmMenus,
+
       children: [
-        {
-          path: "courseware",
-          name: "CourseWare",
-          component: CourseWare,
-        },
-      ],
-    },
+      {
+          path: "curriculumdesign",
+          name: "CurriculumDesign",
+          component: CurriculumDesign,
+      },
+
+      {
+          path: "newcurriculum",
+          name: "NewCurriculum",
+          component: NewCurriculum,
+          children: [{
+              path: "setcourse",
+              name: "SetCourse",
+              component: SetCourse,
+          },
+          {
+              path: "addcourse",
+              name: "AddCourse",
+              component: AddCourse,
+              children: [{
+                  path: "courseinfo",
+                  name: "CourseInfo",
+                  component: CourseInfo,
+                  children: [{
+                      path: "addclass",
+                      name: "AddClass",
+                      component: AddClass,
+                  }]
+              }]
+
+          },
+          {
+              path: "newcurriculumhint1",
+              name: "NewCurriculumHint1",
+              component: NewCurriculumHint1,
+
+          },
+          {
+              path: "newcurriculumhint2",
+              name: "NewCurriculumHint2",
+              component: NewCurriculumHint2,
+
+          },
+       ] 
+      },
+      {
+          path: "selectaddclass",
+          name: "SelectAddclass",
+          component: SelectAddclass,
+      },
+       {
+          path: "previewcourse",
+          name: "PreviewCourse",
+          component: PreviewCourse
+  
+      },
+  ]  
+
+
+  },
+
   ],
 
 
