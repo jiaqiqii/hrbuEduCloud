@@ -88,7 +88,7 @@ export default {
     // 结课激活
     disable(state){
       console.log(this.classData.id)
-      axios
+      this.$axios
         .post("/api/class/stateclass", {
           classIds: [this.classData.id],
           state
